@@ -138,3 +138,4 @@
 /Users/owner/RiderProjects/TheWaterProject/TheWaterProject/obj/Debug/net8.0/TheWaterProject.genruntimeconfig.cache
 /Users/owner/RiderProjects/TheWaterProject/TheWaterProject/obj/Debug/net8.0/ref/TheWaterProject.dll
 /Users/owner/RiderProjects/TheWaterProject/TheWaterProject/obj/Debug/net8.0/TheWaterProject.csproj.CopyComplete
+/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/obj/Debug/net8.0/TheWaterProject.sourcelink.json

@@ -7,7 +7,7 @@
 <table class="table table-bordered table-striped">
     
     <thead>
-    <th>Project Name</th>
+    <th>Product Name</th>
     <th>Quantity</th>
     <th class="text-right">Amount</th>
     <th class="text-right">Subtotal</th>
@@ -18,13 +18,13 @@
     @foreach (var l in Model.Cart?.Lines ?? Enumerable.Empty<Cart.CartLine>())
     {
         <tr>
-            <td class="text-left">@l.Project.ProjectName</td>
+            <td class="text-left">@l.Product.Name</td>
             <td class="text-center">@l.Quantity</td>
             <td class="text-right">$25</td>
             <td class="text-right">@((l.Quantity * 25).ToString("c"))</td>
             <td class="text-center ">
                 <form asp-page-handler="Remove" method="post">
-                    <input type="hidden" name="ProjectId" value="@l.Project.ProjectId"/>
+                    <input type="hidden" name="ProjectId" value="@l.Product.product_ID"/>
                     <input type="hidden" name="returnUrl" value="@Model?.ReturnUrl" />
                     <button type="submit" class="btn btn-sm btn-danger">Remove</button>
                 </form>
@@ -43,5 +43,5 @@
 </table>
 
 <div class="text-center">
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Back to donating!</a>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Back to shopping!</a>
 </div>

@@ -4,16 +4,16 @@ public class Cart
 {
     public List<CartLine> Lines { get; set; } = new List<CartLine>();
 
-    public virtual void AddItem(Project proj, int quantity)
+    public virtual void AddItem(Product product, int quantity)
     {
-        CartLine? line = Lines.Where(x => x.Project.ProjectId == proj.ProjectId)
+        CartLine? line = Lines.Where(x => x.Product.product_ID == product.product_ID)
             .FirstOrDefault();
         
         if (line == null)
         {
             Lines.Add(new CartLine
             {
-                Project = proj,
+                Product = product,
                 Quantity = quantity
             });
         }
@@ -23,7 +23,7 @@ public class Cart
         }
     }
 
-    public virtual void RemoveLine(Project proj) => Lines.RemoveAll(x => x.Project.ProjectId == proj.ProjectId);
+    public virtual void RemoveLine(Product product) => Lines.RemoveAll(x => x.Product.product_ID == product.product_ID);
 
     public virtual void Clear() => Lines.Clear();
 
@@ -32,7 +32,7 @@ public class Cart
     public class CartLine
     {
         public int CartLineId { get; set; }
-        public Project Project { get; set; }
+        public Product Product { get; set; }
         public int Quantity { get; set; }
     }
 }

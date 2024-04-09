@@ -12,30 +12,6 @@
 /dataSources/
 /dataSources.local.xml
 
-
-To ignore the files you've listed in your .gitignore file, you will need to add each file name or pattern directly to the .gitignore. For files that share common prefixes, suffixes, or other patterns, you can use wildcard characters (*) to match multiple files with a single pattern. This can help keep your .gitignore concise and easier to manage.
-
-Here's how you can update your .gitignore file to include the specific files you mentioned, along with some pattern-based ignores for efficiency:
-
-plaintext
-Copy code
-# Default ignored files
-/shelf/
-/workspace.xml
-
-# Rider ignored files
-/modules.xml
-/.idea.TheWaterProject.iml
-/contentModel.xml
-/projectSettingsUpdater.xml
-
-# Editor-based HTTP Client requests
-/httpRequests/
-
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-
 # Added cache and specific project files to ignore
 project.assets.json
 project.nuget.cache
@@ -47,6 +23,10 @@ TheWaterProject.AssemblyInfoInputs.cache
 TheWaterProject.assets.cache
 TheWaterProject.csproj.nuget.dgspec.json
 TheWaterProject.GeneratedMSBuildEditorConfig.editorconfig
+TheWaterProject.dll
+TheWaterProject.pdb
+TheWaterProject.sourcelink.json
+
 
 # Pattern-based ignores for similar files
 *.nuget.cache

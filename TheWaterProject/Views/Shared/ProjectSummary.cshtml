@@ -1,6 +1,7 @@
 @{
 }
 
+@using TheWaterProject.Infrastructrue
 @model Project
 
 <div class="card m-1 p-1">
@@ -14,4 +15,10 @@
         <li>Installation Date: @Model.ProjectInstallation</li>
         <li>Project Phase: @Model.ProjectPhase</li>
     </ul>
+    <form id=@Model.ProjectId method="post" asp-page="/Cart">
+        <input type="hidden" asp-for="@Model.ProjectId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <button type="submit" class="btn-outline-success btn-sm float-end">Donate</button>
+    </form>
+
 </div>

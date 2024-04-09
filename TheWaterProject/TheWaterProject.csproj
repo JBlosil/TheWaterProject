@@ -17,6 +17,8 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
+      <PackageReference Include="MPACKAGE.LibManager" Version="1.0.566" />
     </ItemGroup>
 
 </Project>

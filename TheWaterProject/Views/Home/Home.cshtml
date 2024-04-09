@@ -1,30 +1,37 @@
-<!--LOGO-->
-<img style="width: 200px; height: 200px; border-radius: 1000px" src="Assets/2.png" />
+<!--Edits to make:
+- add the users name to the welcome text
+- make sure the ASP controller is correct in the shopping ad 
+-->
 
+@model Product
+@model IEnumerable<TheWaterProject.Models.Product> 
 
-<!--WELCOME TEXT (COULD BE COOL TO USE THE USER'S NAME IF THEY'RE LOGGED IN...-->
-<div style="width: 1354px; height: 96px; text-align: center; color: white; font-size: 40px; 
-font-family: Antic; font-weight: 400; word-wrap: break-word">
-  WELCOME TO BRICKWELL! YOUR ONE STOP SHOP FOR ALL THINGS LEGO!<br/>HAPPY BRICKING!
+<!-- lOGO -->
+
+<img class="logo" src="Assets/2.png" />
+
+<!-- WELCOME TEXT
+Could be cool to to have the user's name -->
+<div class="welcome-text">
+    WELCOME TO BRICKWELL! YOUR ONE STOP SHOP FOR ALL THINGS LEGO!<br/>HAPPY BRICKING!
 </div>
 
-
-<!--BIG SHOPPING AD & 'SHOP NOW' BUTTON-->
-<div style="width: 1362px; height: 421px; position: relative">
-  <img style="width: 1362px; height: 421px; left: 0px; top: 0px; position: absolute; background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%); border-radius: 30px" src="https://via.placeholder.com/1362x421" />
-  <div style="width: 401px; height: 90px; left: 480px; top: 160px; position: absolute">
-    <div style="width: 401px; height: 90px; left: 0px; top: 0px; position: absolute; background: rgba(217, 217, 217, 0); border-radius: 30px; border: 8px #F06525 solid"></div>
-    <!-- Still need to link the button -->
-    <div style="width: 397px; height: 89px; left: 4px; top: 1px; position: absolute; text-align: center; color: #F06525; font-size: 64px; font-family: Antic; font-weight: 400; word-wrap: break-word">SHOP NOW</div>
-  </div>
+<!-- Big Shopping Ad & 'Shop Now' Button 
+still need to correctly link the button to the shopping page-->
+<div class="shopping-ad">
+    <img src="Assets/lego-crossing.jpg" alt="Legos crossing the street"/>
+    <a asp-controller="Shop" asp-action="Shop" class="shop-now-btn">SHOP NOW</a>
 </div>
 
-<!--INDIVIDUAL BOXES FOR RECOMMENDED PRODUCTS-->
-<div style="width: 416px; height: 342px; position: relative; background: rgba(255, 255, 255, 0.32); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-  <div style="width: 416px; height: 342px; background: rgba(255, 255, 242, 0); border-radius: 25px; border: 2px rgba(0, 0, 0, 0) solid"></div>
-  <img style="width: 352.97px; height: 175.58px" src="https://via.placeholder.com/353x176" />
-  <div style="width: 334.06px; height: 44.28px; text-align: center; color: black; font-size: 24px; font-family: Antic; font-weight: 400; word-wrap: break-word">Ahsoka’s Starfighter and Vulture Droid</div>
-  <div style="width: 145.86px; height: 21.94px; text-align: center; color: black; font-size: 24px; font-family: Antic; font-weight: 400; word-wrap: break-word">$150.00</div>
-  <div style="width: 239.52px; height: 33.59px; background: #F06525; border-radius: 20px"></div>
-  <div style="width: 184.05px; height: 27.48px; text-align: center; color: white; font-size: 30px; font-family: Antic; font-weight: 400; word-wrap: break-word">ADD TO CART</div>
-</div>
+<!-- Boxes For Recommended Products -->
+@foreach (var product in Model)
+{
+    <div class="product-box">
+        <img src="@product.img_link" alt="@product.Name" />
+        <div class="product-title">@product.Name</div>
+        <div class="product-price">@string.Format("{0:C}", product.Price)</div>
+        <div class="add-to-cart">ADD TO CART</div>
+    </div>
+}
+
+ 

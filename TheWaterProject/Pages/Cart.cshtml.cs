@@ -7,9 +7,9 @@ namespace TheWaterProject.Pages
 {
     public class CartModel : PageModel
     {
-        private IWaterRepository _repo;
+        private IIntexRepository _repo;
         
-        public CartModel(IWaterRepository temp, Cart cartService)
+        public CartModel(IIntexRepository temp, Cart cartService)
         {
             _repo = temp;
             Cart = cartService;
@@ -24,22 +24,22 @@ namespace TheWaterProject.Pages
             ReturnUrl = returnUrl ?? "/";
         }
 
-        public IActionResult OnPost(int projectId, string returnUrl)
+        public IActionResult OnPost(int productId, string returnUrl)
         {
-            Project proj = _repo.Projects
-                .FirstOrDefault(x => x.ProjectId == projectId);
+            Product product = _repo.Products
+                .FirstOrDefault(x => x.product_ID == productId);
 
-            if (proj != null)
+            if (product != null)
             {
-                Cart.AddItem(proj, 1); 
+                Cart.AddItem(product, 1); 
             }
 
             return RedirectToPage(new { returnUrl = returnUrl });
         }
 
-        public IActionResult OnPostRemove(int projectId, string returnUrl)
+        public IActionResult OnPostRemove(int productId, string returnUrl)
         {
-             Cart.RemoveLine(Cart.Lines.First(x => x.Project.ProjectId == projectId).Project);
+             Cart.RemoveLine(Cart.Lines.First(x => x.Product.product_ID == productId).Product);
              return RedirectToPage(new { returnUrl = returnUrl });
         }
     }

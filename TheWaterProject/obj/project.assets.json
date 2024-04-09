@@ -9167,11 +9167,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/TheWaterProject.csproj",
+      "projectUniqueName": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/TheWaterProject.csproj",
       "projectName": "TheWaterProject",
-      "projectPath": "/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/TheWaterProject.csproj",
+      "projectPath": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/TheWaterProject.csproj",
       "packagesPath": "/Users/owner/.nuget/packages/",
-      "outputPath": "/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/obj/",
+      "outputPath": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/owner/.nuget/NuGet/NuGet.Config"

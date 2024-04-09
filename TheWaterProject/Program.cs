@@ -6,12 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<WaterProjectContext>(options =>
+builder.Services.AddDbContext<IntexDbContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:WaterConnection"]);
+    options.UseSqlite(builder.Configuration["ConnectionStrings:IntexConnection"]);
 });
 
-builder.Services.AddScoped<IWaterRepository, EFWaterRepository>();
+builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
 
 builder.Services.AddRazorPages();
 
@@ -39,10 +39,10 @@ app.UseSession();
 
 app.UseAuthorization();
 
-app.MapControllerRoute("pagenumandtype", "{projectType}/Page{pageNum}", new { Controller = "Home", Action = "Index" });
+app.MapControllerRoute("pagenumandtype", "{productCategory}/Page{pageNum}", new { Controller = "Home", Action = "Index" });
 app.MapControllerRoute("page", "Page/{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("projectType", "{projectType}", new { Controller = "Home", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("pagination", "Projects/Page{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
+app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Home", Action = "Index", pageNum = 1 });
+app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
 
 
 app.MapDefaultControllerRoute();

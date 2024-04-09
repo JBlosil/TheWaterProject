@@ -153,13 +153,8 @@ body {
   font-size: 64px;
 
 
+  /* ABOUT PAGE STYLING */
 
-
-  
-  
-
-
-/* ABOUT PAGE STYLING */
   body, html {
     margin: 0;
     padding: 0;
@@ -220,5 +215,6 @@ body {
     margin-top: 20px;
     font-size: 1rem;
   }
+}
 
 

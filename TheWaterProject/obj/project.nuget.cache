@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1DAWWUtb5t4QWbiMRvCGDXrxoIX1IWB894oh8aaSIAQux/JJpmau7NVnBnfRSV8P/iQJsnmktgBI9c+EGCP77A==",
+  "dgSpecHash": "3M4DnRK5BYUdfukaJ0it0fYPdWRiuaFNzv2JHpFyDaGZIvppzJGoVcVIOtYhJOoyaGqYFuFBnA6iL4CTMtyZKg==",
   "success": true,
-  "projectFilePath": "/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/TheWaterProject.csproj",
+  "projectFilePath": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/TheWaterProject.csproj",
   "expectedPackageFiles": [
     "/Users/owner/.nuget/packages/dapper/2.0.90/dapper.2.0.90.nupkg.sha512",
     "/Users/owner/.nuget/packages/entityframework/6.4.4/entityframework.6.4.4.nupkg.sha512",

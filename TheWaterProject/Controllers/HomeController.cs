@@ -7,21 +7,21 @@ namespace TheWaterProject.Controllers;
 
 public class HomeController : Controller
 {
-    private IWaterRepository _repo;
+    private IIntexRepository _repo;
 
-    public HomeController(IWaterRepository temp)
+    public HomeController(IIntexRepository temp)
     {
         _repo = temp;
     }
-    public IActionResult Index(int pageNum, string? projectType)
+    public IActionResult Index(int pageNum, string? productCategory)
     {
         int pageSize = 5;
 
-        var blah = new ProjectsListViewModel
+        var blah = new ProductsListViewModel()
         {
-            Projects = _repo.Projects
-                .Where(x => x.ProjectType==projectType || projectType == null)
-                .OrderBy(x => x.ProgramName)
+            Products = _repo.Products
+                .Where(x => x.Category==productCategory || productCategory == null)
+                .OrderBy(x => x.Name)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -29,10 +29,10 @@ public class HomeController : Controller
             {
                 CurrentPage = pageNum,
                 ItemsPerPage = pageSize,
-                TotalItems = projectType == null ? _repo.Projects.Count() : _repo.Projects.Where(x => x.ProjectType == projectType).Count(),
+                TotalItems = productCategory == null ? _repo.Products.Count() : _repo.Products.Where(x => x.Category == productCategory).Count(),
             },
             
-            CurrentProjectType = projectType
+            CurrentProductCategory = productCategory
         };
         
         return View(blah);

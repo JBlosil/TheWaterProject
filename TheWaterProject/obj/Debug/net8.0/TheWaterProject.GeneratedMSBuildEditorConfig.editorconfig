@@ -26,8 +26,36 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/owner/RiderProjects/TheWaterProject/TheWaterProject
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Pages/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Pages/_CartLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0NhcnRMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Views/Shared/Components/CartSummary/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvQ2FydFN1bW1hcnkvRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Views/Shared/Components/ProjectTypes/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvUHJvamVjdFR5cGVzL0RlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Views/Shared/ProjectSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1Byb2plY3RTdW1tYXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/owner/RiderProjects/TheWaterProject/TheWaterProject/Views/_ViewImports.cshtml]

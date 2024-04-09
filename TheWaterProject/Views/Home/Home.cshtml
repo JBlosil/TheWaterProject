@@ -1,0 +1,37 @@
+<!--Edits to make:
+- add the users name to the welcome text
+- make sure the ASP controller is correct in the shopping ad 
+-->
+
+@model Product
+@model IEnumerable<TheWaterProject.Models.Product> 
+
+<!-- lOGO -->
+
+<img class="logo" src="Assets/2.png" />
+
+<!-- WELCOME TEXT
+Could be cool to to have the user's name -->
+<div class="welcome-text">
+    WELCOME TO BRICKWELL! YOUR ONE STOP SHOP FOR ALL THINGS LEGO!<br/>HAPPY BRICKING!
+</div>
+
+<!-- Big Shopping Ad & 'Shop Now' Button 
+still need to correctly link the button to the shopping page-->
+<div class="shopping-ad">
+    <img src="Assets/lego-crossing.jpg" alt="Legos crossing the street"/>
+    <a asp-controller="Shop" asp-action="Shop" class="shop-now-btn">SHOP NOW</a>
+</div>
+
+<!-- Boxes For Recommended Products -->
+@foreach (var product in Model)
+{
+    <div class="product-box">
+        <img src="@product.img_link" alt="@product.Name" />
+        <div class="product-title">@product.Name</div>
+        <div class="product-price">@string.Format("{0:C}", product.Price)</div>
+        <div class="add-to-cart">ADD TO CART</div>
+    </div>
+}
+ 
+ 

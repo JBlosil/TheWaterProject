@@ -1,41 +1,53 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - TheWaterProject</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/TheWaterProject.styles.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/TheWaterProject/node_modules/fortawesome/fontawesome-free/css/fontawesome.css" asp-append-version="true"/>
+     <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>@ViewData["Title"] - TheWaterProject</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/TheWaterProject.styles.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/TheWaterProject/node_modules/fortawesome/fontawesome-free/css/fontawesome.css" asp-append-version="true"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Antic&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div class="bg-dark text-white p-2">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col navbar-brand">THE WATER PROJECT</div>
-            <div class="col-6 navbar-text text-end"><vc:cart-summary/></div>
-        </div>
-    </div>
-</div>
-
-<div class="row m-1 p-1">
-    <div class="col-3">
-        <vc:product-categories />
-    </div>
-    <div class="container col-9">
-        <main role="main" class="pb-3">
+    <div style="display: flex; flex-direction: column; min-height: 100vh;">
+        
+        <!-- NAVBAR -->
+        <header>
+            <div class="nav-container">
+                <img class="logo" src="Assets/2.png" />
+                <div class="nav-item">ABOUT</div>
+                <div class="nav-item">SHOP</div>
+                <div class="nav-item-admin">USERS</div>
+                <div class="nav-item-admin">PRODUCTS</div>
+                <div class="nav-item-admin">ORDERS</div>
+                <div class="nav-item">LOGIN</div>
+                <img class="ShoppingCart" src="https://via.placeholder.com/60x60" />
+            </div>
+        </header>
+        
+         
+        <!-- BODY -->
+        <main style="flex-grow: 1;">
             @RenderBody()
         </main>
+        
+        
+        <!-- FOOTER -->
+        <footer class="Footer">
+            <div class="footer-item">ABOUT</div>
+            <div class="footer-item">CONNECT WITH US!</div>
+            <div class="footer-item">PRIVACY</div>
+            <div class="footer-item-back-to-top">BACK TO TOP</div>
+            <img src="../wwwroot/Assets/2.png" style="width: 100px; height: 100px; position: absolute; left: 22px; top: 25px; border-radius: 50%;">
+        </footer>
     </div>
-</div>
-
-
-
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

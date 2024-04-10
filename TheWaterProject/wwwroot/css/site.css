@@ -1,5 +1,7 @@
 html {
   font-size: 14px;
+  position: relative;
+  min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -18,7 +20,11 @@ html {
 }
 
 body {
+  margin-top: 60px;
   margin-bottom: 60px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .antic-regular {
@@ -34,6 +40,13 @@ body, html {
   height: 100%;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
 div {
   box-sizing: border-box;
 }
@@ -47,6 +60,14 @@ div {
   margin: 0 20px;
   flex: 1; /* This allows the items to grow and shrink as needed */
   text-align: center; /* Center the text inside each nav item */
+}
+
+.nav-logo {
+  height: 85px;
+  width: 85px;
+  display: block;
+  border-radius: 50%;
+  margin: 0 auto; /* Centers the image */
 }
 
 /* Container holding the nav items */
@@ -110,7 +131,7 @@ body {
   height: 200px;
   border-radius: 50%;
   margin: 0 auto; /* Centers the image */
-  margin-top: -100px; /* Adjusts vertical position; could be changed based on navbar height */
+  margin-top: 20px; /* Adjusts vertical position; could be changed based on navbar height */
 }
 
 /* Welcome text styling */

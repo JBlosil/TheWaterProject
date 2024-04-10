@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TheWaterProject.Models;
 
@@ -8,7 +9,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<IntexDbContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:IntexConnection"]);
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
 });
 
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
@@ -43,6 +44,7 @@ app.MapControllerRoute("pagenumandtype", "{productCategory}/Page{pageNum}", new 
 app.MapControllerRoute("products", "Products/{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
 app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Product", Action = "Index", pageNum = 1 });
 app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
+app.MapControllerRoute ("productDetails", "Products/{productName}", new {Controller = "ProductDetails", Action = "Index" });
 
 
 app.MapDefaultControllerRoute();

@@ -2,9 +2,11 @@
 
 @{
     ViewData["Title"] = "Order Review";
+    Layout = null;
 }
 
 <!-- Bootstrap table for orders -->
+
 <div class="container mt-3">
     <h2>Orders</h2>
     <table class="table">
@@ -20,19 +22,22 @@
         </tr>
         </thead>
         <tbody>
-        @* @foreach (var order in Model.Orders) *@
-        @* { *@
-        @*     <tr> *@
-        @*         <td>@order.TransactionId</td> *@
-        @*         $1$ <td>@order.Status</td> #1# *@
-        @*         $1$ <td>@order.CustomerName</td> #1# *@
-        @*         <td>@order.Date</td> *@
-        @*         <td>$@order.Amount</td> *@
-        @*         <td>@order.ShippingAddress</td> *@
-        @*         <td>@order.Fraud </td> *@
-        @*     </tr> *@
-        @* } *@
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.TransactionId</td>
+                <td></td>@* @order.Status *@
+                <td></td>@* @order.CustomerName *@
+                <td>@order.Date</td>
+                <td>$@order.Amount</td>
+                <td>@order.ShippingAddress</td>
+                <td>@order.Fraud </td>
+            </tr>
+        }
         </tbody>
     </table>
     <!-- Pagination here -->
 </div>
+
+<div page-model = "@Model.PaginationInfo" page-action = "Index" page-class-enabled = "true" 
+     page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>

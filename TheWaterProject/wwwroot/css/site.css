@@ -20,3 +20,201 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.antic-regular {
+  font-family: "Antic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* NAV BAR STYLES */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+/* Base styles for nav items */
+.nav-item, .nav-item-admin {
+  color: white;
+  font-size: 40px;
+  font-family: 'Antic', sans-serif;
+  font-weight: 400;
+  margin: 0 20px;
+  flex: 1; /* This allows the items to grow and shrink as needed */
+  text-align: center; /* Center the text inside each nav item */
+}
+
+/* Container holding the nav items */
+.nav-container {
+  display: flex;
+  justify-content: space-around; /* This will space out the nav items evenly */
+  align-items: center;
+  width: 100%; /* Take full width of its parent */
+  height: 100px;
+  background: #F06525;
+  border-radius: 30px;
+}
+
+/* Responsive font sizes */
+@media (max-width: 1024px) {
+  .nav-item, .nav-item-admin {
+    font-size: 30px; /* Smaller font size for tablet screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-item, .nav-item-admin {
+    font-size: 20px; /* Even smaller font size for mobile screens */
+  }
+}
+
+/* FOOTER STYLES */
+.Footer {
+  width: 100%;
+  height: 150px;
+  background: #5271FF;
+  border-radius: 30px;
+  color: white;
+  position: relative;
+}
+
+.footer-item {
+  position: absolute;
+  font-size: 16px;
+  font-family: Antic, sans-serif;
+  font-weight: 400;
+}
+
+
+
+
+
+
+
+/* General styles for the layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Antic', sans-serif;
+}
+
+/* Centering the logo right under the navbar */
+.logo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto; /* Centers the image */
+  margin-top: -100px; /* Adjusts vertical position; could be changed based on navbar height */
+}
+
+/* Welcome text styling */
+.welcome-text {
+  width: 100%; /* Full width to center text */
+  text-align: center;
+  color: #F06525;
+  font-size: 40px;
+  font-weight: 400;
+  margin-top: 20px; /* Adds some space below the logo */
+  word-wrap: break-word;
+}
+
+/* Big shopping ad & button styling */
+.shopping-ad {
+  width: 100%; /* Full width for responsiveness */
+  height: auto; /* Adjust height automatically */
+  position: relative;
+  background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
+  border-radius: 30px;
+  overflow: hidden; /* Ensure no overflow for the border-radius */
+}
+
+.shop-now-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 401px;
+  height: 90px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the button */
+  border: 8px #F06525 solid;
+  border-radius: 30px;
+}
+
+.shop-now-btn div {
+  color: #F06525;
+  font-size: 64px;
+
+
+  /* ABOUT PAGE STYLING */
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+  }
+
+  .profile-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .profile-image {
+    width: 25%;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .intro-text {
+    flex-grow: 1;
+    font-size: 1rem;
+  }
+
+  .event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .event-image {
+    width: 25%;
+    border-radius: 50%;
+  }
+
+  .event-text {
+    flex-basis: 50%;
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .event-left .event-text {
+    text-align: right;
+  }
+
+  .event-right .event-image {
+    order: 2;
+  }
+
+  .event-right .event-text {
+    text-align: left;
+  }
+
+  .final-note {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+}
+
+

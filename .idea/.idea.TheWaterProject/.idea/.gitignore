@@ -11,3 +11,30 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+# Added cache and specific project files to ignore
+project.assets.json
+project.nuget.cache
+project.packagespec.json
+rider.project.model.nuget.info
+rider.project.restore.info
+TheWaterProject.AssemblyInfo.cs
+TheWaterProject.AssemblyInfoInputs.cache
+TheWaterProject.assets.cache
+TheWaterProject.csproj.nuget.dgspec.json
+TheWaterProject.GeneratedMSBuildEditorConfig.editorconfig
+TheWaterProject.dll
+TheWaterProject.pdb
+TheWaterProject.sourcelink.json
+
+
+# Pattern-based ignores for similar files
+*.nuget.cache
+*.packagespec.json
+*.model.nuget.info
+*.restore.info
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.assets.cache
+*.csproj.nuget.dgspec.json
+*.GeneratedMSBuildEditorConfig.editorconfig

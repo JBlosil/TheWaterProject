@@ -33,16 +33,16 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
-
 app.UseSession();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute("pagenumandtype", "{productCategory}/Page{pageNum}", new { Controller = "Home", Action = "Index" });
-app.MapControllerRoute("page", "Page/{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Home", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
+app.MapControllerRoute("pagenumandtype", "{productCategory}/Page{pageNum}", new { Controller = "Product", Action = "Index" });
+app.MapControllerRoute("products", "Products/{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
+app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Product", Action = "Index", pageNum = 1 });
+app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
 
 
 app.MapDefaultControllerRoute();

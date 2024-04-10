@@ -7,15 +7,6 @@
 
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - TheWaterProject</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" asp-append-version="true"/>
     
     <style>
         .add-to-cart {
@@ -31,25 +22,29 @@
             margin: 0 auto; /* Centers the button horizontally */
         }
     </style>
-</head>
-<body>
+
 
 <section class="product-display container">
     <div class="row">
         <div class="col-md-6">
+            @* will be pulled from db *@
             <img src="~/img/AshokaSF.png" alt="Ahsoka's Starfighter and Vulture Droid" class="img-fluid">
         </div>
         <div class="col-md-6">
             <div class="product-info">
+                @* will be pulled from db *@
                 <h1 class="product-title" style="font-weight: bolder; font-size: 40px">Ahsoka's Starfighter and Vulture Droid</h1>
                 <br/>
                 <br/>
+                @* will be pulled from db *@
                 <span class="price" style="color: #F06525; font-weight: bolder; font-size: 36px">$150</span>
                 <br/>
                 <br/>
+                @* will be pulled from db *@
                 <span style="font-weight: bolder; font-size: 24px">Description: </span>
                 <br/>
                 <br/>
+                @* will be pulled from db *@
                 <p class="description">Using her wits, piloting skills and Jedi training, Ahsoka...</p>
                 <button class="btn rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
             </div>
@@ -60,12 +55,6 @@
 
 
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-
-</body>
-</html>
 
 <!-- Add interactive elements as needed, such as Add to Cart button -->
 

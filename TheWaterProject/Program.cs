@@ -43,8 +43,8 @@ app.MapControllerRoute("pagenumandtype", "{productCategory}/Page{pageNum}", new 
 app.MapControllerRoute("page", "Page/{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
 app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Home", Action = "Index", pageNum = 1 });
 app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
-app.MapControllerRoute (name: "Default", pattern: "{controller=ProductDetails}/{action=ProductDetails}/{id?}");
-
+app.MapControllerRoute("productDetails", "ProductDetails/{productId}", new { Controller = "ProductDetails", Action = "ProductDetails" }
+);
 app.MapDefaultControllerRoute();
 
 app.MapRazorPages();

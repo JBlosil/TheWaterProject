@@ -45,7 +45,6 @@ app.MapControllerRoute("products", "Products/{pageNum}", new { Controller = "Pro
 app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Product", Action = "Index", pageNum = 1 });
 app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
 app.MapControllerRoute ("productDetails", "ProductDetails/{productId}", new { Controller = "ProductDetails", Action = "ProductDetails" });
-app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 
 app.MapDefaultControllerRoute();

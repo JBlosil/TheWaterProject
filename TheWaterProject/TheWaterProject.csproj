@@ -21,4 +21,8 @@
       <PackageReference Include="MPACKAGE.LibManager" Version="1.0.566" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\OrderReview\OrderReiview.cshtml" />
+    </ItemGroup>
+
 </Project>

@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Product Details";
-    Layout = null;
+    // Layout = null;
 
 }
 
@@ -20,13 +20,15 @@
     <style>
         .add-to-cart {
             background-color: #F06525;
-            align-self: center;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 0; /* Adjusted padding to have 0 on the sides */
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 50px; /* Rounded-pill usually means fully rounded edges, 50px will enforce it if the button is not fully rounded */
             font-size: 1em;
+            display: block; /* Makes the button a block-level element */
+            width: auto; /* Allows button to resize as per its container's width */
+            margin: 0 auto; /* Centers the button horizontally */
         }
     </style>
 </head>
@@ -49,7 +51,7 @@
                 <br/>
                 <br/>
                 <p class="description">Using her wits, piloting skills and Jedi training, Ahsoka...</p>
-                <button class="btn rounded-pill add-to-cart">ADD TO CART</button>
+                <button class="btn rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
             </div>
         </div>
     </div>

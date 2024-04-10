@@ -14,13 +14,13 @@ public class ProductDetailsController : Controller
         _repo = temp;
     }
 
-    public IActionResult Index(int product_ID, string productName)
+    public IActionResult ProductDetails(int productId)
     {
-        var details = new ProductDetailsViewModel()
+        var product = _repo.Products.FirstOrDefault(p => p.product_ID == productId);
+
+        var details = new ProductDetailsViewModel
         {
-            Products = _repo.Products.Where(p => p.product_ID == product_ID),
-            
-            ProductName = productName
+            Product = product
         };
 
         // if (product == null)

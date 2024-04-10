@@ -9162,19 +9162,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/owner/.nuget/packages/": {}
+    "/Users/ethanhoopes/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/TheWaterProject.csproj",
+      "projectUniqueName": "/Users/ethanhoopes/RiderProjects/TheWaterProject/TheWaterProject/TheWaterProject.csproj",
       "projectName": "TheWaterProject",
-      "projectPath": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/TheWaterProject.csproj",
-      "packagesPath": "/Users/owner/.nuget/packages/",
-      "outputPath": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/obj/",
+      "projectPath": "/Users/ethanhoopes/RiderProjects/TheWaterProject/TheWaterProject/TheWaterProject.csproj",
+      "packagesPath": "/Users/ethanhoopes/.nuget/packages/",
+      "outputPath": "/Users/ethanhoopes/RiderProjects/TheWaterProject/TheWaterProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/owner/.nuget/NuGet/NuGet.Config"
+        "/Users/ethanhoopes/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -9246,7 +9246,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/Users/ethanhoopes/.dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

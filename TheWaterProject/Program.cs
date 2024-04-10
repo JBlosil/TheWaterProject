@@ -47,7 +47,6 @@ app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller 
 app.MapControllerRoute ("productDetails", "ProductDetails/{productId}", new { Controller = "ProductDetails", Action = "ProductDetails" });
 app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
-
 app.MapDefaultControllerRoute();
 
 app.MapRazorPages();

@@ -1,18 +1,38 @@
-@model TModel
+@model OrderReviewViewModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Order Review";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<!-- Bootstrap table for orders -->
+<div class="container mt-3">
+    <h2>Orders</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Status</th>
+            <th>Customer Name</th>
+            <th>Date Placed</th>
+            <th>Amount</th>
+            <th>Shipping Address</th>
+            <th>Likely Fraud</th>
+        </tr>
+        </thead>
+        <tbody>
+        @* @foreach (var order in Model.Orders) *@
+        @* { *@
+        @*     <tr> *@
+        @*         <td>@order.TransactionId</td> *@
+        @*         $1$ <td>@order.Status</td> #1# *@
+        @*         $1$ <td>@order.CustomerName</td> #1# *@
+        @*         <td>@order.Date</td> *@
+        @*         <td>$@order.Amount</td> *@
+        @*         <td>@order.ShippingAddress</td> *@
+        @*         <td>@order.Fraud </td> *@
+        @*     </tr> *@
+        @* } *@
+        </tbody>
+    </table>
+    <!-- Pagination here -->
 </div>
-</body>
-</html>

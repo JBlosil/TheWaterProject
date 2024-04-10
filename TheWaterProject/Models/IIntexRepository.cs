@@ -2,5 +2,6 @@ namespace TheWaterProject.Models;
 
 public interface IIntexRepository
 {
-    public IQueryable<Product> Products { get; }
+    IQueryable<Product> Products { get; }
+    IQueryable<Order> Orders { get; }
 }

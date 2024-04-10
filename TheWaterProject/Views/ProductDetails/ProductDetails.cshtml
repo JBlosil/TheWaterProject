@@ -1,0 +1,121 @@
+@using TheWaterProject.Controllers
+@model ProductDetailsViewModel
+
+@{
+    ViewData["Title"] = "Product Details";
+    // Layout = null;
+
+}
+
+    
+    <style>
+        .add-to-cart {
+            background-color: #F06525;
+            color: white;
+            border: none;
+            padding: 10px 0; /* Adjusted padding to have 0 on the sides */
+            cursor: pointer;
+            border-radius: 50px; /* Rounded-pill usually means fully rounded edges, 50px will enforce it if the button is not fully rounded */
+            font-size: 1em;
+            display: block; /* Makes the button a block-level element */
+            width: auto; /* Allows button to resize as per its container's width */
+            margin: 0 auto; /* Centers the button horizontally */
+        }
+        .product-display {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center; /* Centers items vertically */
+            justify-content: center; /* Centers items horizontally when there's extra space */
+        }
+
+        .img-fluid {
+            max-width: 100%; /* Makes the image responsive */
+            height: auto; /* Maintains aspect ratio */
+        }
+        .description {
+            display: -webkit-box;
+            -webkit-line-clamp: 6; /* Number of lines you want to display */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 20px; /* Adjust as needed */
+        }
+
+        .read-more {
+            display: none;
+            cursor: pointer;
+            color: #007bff; /* Bootstrap primary color, adjust as needed */
+            text-decoration: underline;
+            border: none;
+        }
+
+        .read-more.expanded + .description {
+            -webkit-line-clamp: none; /* Show all lines when expanded */
+        }
+    </style>
+
+
+<section class="product-display container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.Product.img_link" alt="@Model.Product.Name" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <div class="product-info">
+                <h1 class="product-title" style="font-weight: bolder; font-size: 40px">@Model.Product.Name</h1>
+                <br/>
+                <br/>
+                <span class="price" style="color: #F06525; font-weight: bolder; font-size: 36px">$@Model.Product.Price</span>
+                <br/>
+                <br/>
+                <span style="font-weight: bolder; font-size: 24px">Description: </span>
+                <br/>
+                <br/>
+                <p class="description">@Model.Product.Description</p><a class="read-more">Read More</a>
+                <button class="btn rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+</section>
+<br/>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <i class="fas fa-calendar-alt" aria-hidden="true"></i> <span>2009</span>
+        </div>
+        <div class="col text-center">
+            <i class="fas fa-puzzle-piece" aria-hidden="true"></i> <span>290 Pieces</span>
+        </div>
+        <div class="col text-center">
+            <i class="fas fa-star" aria-hidden="true"></i> <span>Avg 4/5</span>
+        </div>
+        <div class="col text-center">
+            <i class="fas fa-tint" aria-hidden="true"></i> <span>Red & White</span>
+        </div>
+        <div class="col text-center">
+            <i class="fas fa-fighter-jet" aria-hidden="true"></i> <span>Star Wars - Flight</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const readMoreButton = document.querySelector('.read-more');
+        const description = document.querySelector('.description');
+
+        // Change this threshold based on your average character per line
+        const charThreshold = 400;
+
+        if (description.innerText.length > charThreshold) {
+            readMoreButton.style.display = 'block';
+        }
+
+        readMoreButton.addEventListener('click', () => {
+            const isExpanded = readMoreButton.classList.toggle('expanded');
+            readMoreButton.textContent = isExpanded ? 'Read Less' : 'Read More';
+            description.style.display = isExpanded ? 'block' : '-webkit-box';
+        });
+    });
+</script>

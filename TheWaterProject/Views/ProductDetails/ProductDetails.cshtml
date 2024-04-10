@@ -3,12 +3,12 @@
 
 @{
     ViewData["Title"] = "Product Details";
-    // Layout = null;
-
+    
 }
 
+
     
-    <style>
+<style>
         .add-to-cart {
             background-color: #F06525;
             color: white;
@@ -52,6 +52,34 @@
         .read-more.expanded + .description {
             -webkit-line-clamp: none; /* Show all lines when expanded */
         }
+        .product-meta {
+            margin-bottom: 15px; /* Adjust as needed */
+        }
+        .container {
+            padding-left: 15px; /* Slightly larger padding on smaller screens */
+            padding-right: 15px;
+        }
+        .rec-card {
+            border-radius: 20px; /* Adjust as needed for your design */
+            background-color: #ffe7d9;
+            margin-bottom: 20px; /* Space below the card */
+        }
+
+        .rec-card .card-img-top {
+            border-top-left-radius: 20px; /* Match parent border-radius */
+            border-top-right-radius: 20px;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensure the image covers the area without stretching */
+        }
+
+        .card-body {
+            padding: 0.5rem; /* Reduced padding */
+        }
+
+        .product-price, .product-rating {
+            display: block; /* Stack price and rating */
+            margin-bottom: 0.25rem; /* Space between price and rating */
+        }
     </style>
 
 
@@ -64,15 +92,12 @@
             <div class="product-info">
                 <h1 class="product-title" style="font-weight: bolder; font-size: 40px">@Model.Product.Name</h1>
                 <br/>
-                <br/>
                 <span class="price" style="color: #F06525; font-weight: bolder; font-size: 36px">$@Model.Product.Price</span>
                 <br/>
                 <br/>
                 <span style="font-weight: bolder; font-size: 24px">Description: </span>
-                <br/>
-                <br/>
                 <p class="description">@Model.Product.Description</p><a class="read-more">Read More</a>
-                <button class="btn rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
+                <button class="btn btn-primary rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
             </div>
         </div>
     </div>
@@ -83,19 +108,19 @@
 <div class="container">
     <div class="row">
         <div class="col text-center">
-            <i class="fas fa-calendar-alt" aria-hidden="true"></i> <span>2009</span>
+            <i class="fa-solid fa-calendar-days fa-2xl"></i> <p>@Model.Product.Year</p>
         </div>
         <div class="col text-center">
-            <i class="fas fa-puzzle-piece" aria-hidden="true"></i> <span>290 Pieces</span>
+            <i class="fa-solid fa-cubes fa-2xl"></i> <p>@Model.Product.Num_Parts</p>
         </div>
         <div class="col text-center">
-            <i class="fas fa-star" aria-hidden="true"></i> <span>Avg 4/5</span>
+            <i class="fas fa-star fa-2xl" aria-hidden="true"></i> <p>Avg 4/5</p>
         </div>
         <div class="col text-center">
-            <i class="fas fa-tint" aria-hidden="true"></i> <span>Red & White</span>
+            <i class="fas fa-tint fa-2xl" aria-hidden="true"></i> <p>@Model.Product.Primary_Color & @Model.Product.Secondary_Color</p>
         </div>
         <div class="col text-center">
-            <i class="fas fa-fighter-jet" aria-hidden="true"></i> <span>Star Wars - Flight</span>
+            <i class="fa-solid fa-table fa-2xl"></i> <p>@Model.Product.Category</p>
         </div>
     </div>
 </div>
@@ -119,3 +144,34 @@
         });
     });
 </script>
+
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center ">
+            <span style="font-size: 36px; font-weight: bold; color: #F06525; stroke-width: 10pt">More Like This</span>
+        </div>
+    </div>
+</div>
+
+@* @foreach (var product in Model) *@
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card rec-card">
+                    <img src="img link" class="card-img-top" alt="product name">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Some Lego Build</h5>
+                        <p class="product-price">$000</p>
+                        <p class="product-rating">Avg x/ 5 Stars</p>
+                        <a href="#" class="btn btn-primary add-to-cart">ADD TO CART</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above block for each product, or use a loop -->
+        </div>
+    </div>

@@ -239,3 +239,34 @@ body {
 }
 
 
+/* ORDER CONFIRMATION PAGE STYLING*/
+
+#confirmation-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('../wwwroot/Assets/lego-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#confirmation-card {
+  background: #f06525;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+}
+
+#confirmation-card h1 {
+  color: #ffffff;
+}
+
+#confirmation-card p {
+  color: #666;
+}
+
+#order-details p {
+  font-weight: bold;
+}

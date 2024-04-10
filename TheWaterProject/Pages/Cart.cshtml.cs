@@ -24,10 +24,10 @@ namespace TheWaterProject.Pages
             ReturnUrl = returnUrl ?? "/";
         }
 
-        public IActionResult OnPost(int productId, string returnUrl)
+        public IActionResult OnPost(int product_ID, string returnUrl)
         {
             Product product = _repo.Products
-                .FirstOrDefault(x => x.product_ID == productId);
+                .FirstOrDefault(x => x.product_ID == product_ID);
 
             if (product != null)
             {
@@ -37,9 +37,9 @@ namespace TheWaterProject.Pages
             return RedirectToPage(new { returnUrl = returnUrl });
         }
 
-        public IActionResult OnPostRemove(int productId, string returnUrl)
+        public IActionResult OnPostRemove(int product_ID, string returnUrl)
         {
-             Cart.RemoveLine(Cart.Lines.First(x => x.Product.product_ID == productId).Product);
+             Cart.RemoveLine(Cart.Lines.First(x => x.Product.product_ID == product_ID).Product);
              return RedirectToPage(new { returnUrl = returnUrl });
         }
     }

@@ -15,7 +15,7 @@
         <li>Release Year: @Model.Year</li>
     </ul>
     <form id=@Model.product_ID method="post" asp-page="/Cart">
-        <input type="hidden" asp-for="@Model.product_ID" />
+        <input type="hidden" asp-for="product_ID" />
         <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
         <button type="submit" class="btn-outline-success btn-sm float-end">Add to Cart</button>
     </form>

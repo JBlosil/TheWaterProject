@@ -17,67 +17,67 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TheWaterProject
 build_property.RootNamespace = TheWaterProject
-build_property.ProjectDir = /Users/owner/RiderProjects/Intex2024/TheWaterProject/
+build_property.ProjectDir = /Users/student/Documents/Brickwell/TheWaterProject/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/owner/RiderProjects/Intex2024/TheWaterProject
+build_property.MSBuildProjectDirectory = /Users/student/Documents/Brickwell/TheWaterProject
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Pages/Cart.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Pages/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2FydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Pages/_CartLayout.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Pages/_CartLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0NhcnRMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Pages/_ViewImports.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Pages/_ViewStart.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/Home/About.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/Home/Home.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ib21lLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/Home/Index.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/Product/Index.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/Shared/Components/CartSummary/Default.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/ProductDetails/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdERldGFpbHMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/Shared/Components/CartSummary/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvQ2FydFN1bW1hcnkvRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/Shared/Components/ProductCategories/Default.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/Shared/Components/ProductCategories/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvUHJvZHVjdENhdGVnb3JpZXMvRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/Shared/ProductSummary.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/Shared/ProductSummary.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1Byb2R1Y3RTdW1tYXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/_ViewImports.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/_ViewStart.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/owner/RiderProjects/Intex2024/TheWaterProject/Views/Shared/_Layout.cshtml]
+[/Users/student/Documents/Brickwell/TheWaterProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cwhomemwof

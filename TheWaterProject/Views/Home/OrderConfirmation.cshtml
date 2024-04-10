@@ -1,0 +1,32 @@
+<!--
+EDITS TO MAKE:
+- add the logo to the messages
+- finalize the controller for this
+- get the actual model name
+-->
+
+@model TheWaterProject.Models.Order
+
+<div id="confirmation-wrapper" style="background-image: url('@Url.Content("TheWaterProject/wwwroot/Assets/lego-bg.jpg")'); background-size: cover; background-position: center;">
+
+    <div id="confirmation-card">
+        @if (Model.Fraud == 1)
+        {
+            <h1>Alert!</h1>
+            <p>There has been a problem with your order.</p>
+            <p>Your order is currently under review for potential issues. We will contact you shortly.</p>
+        }
+        else
+        {
+            <h1>Thank You!</h1>
+            <p>Your order has been confirmed!</p>
+            <p>We will be packaging your order very shortly and will send email updates so you can track your next build!</p>
+            <p>Happy Bricking!</p>
+            <div id="order-details">
+                <p><strong>Order Number:</strong> @Model.TransactionId</p>
+                @* <p><strong>Email:</strong> @Model.Email</p> *@
+            </div>
+        }
+    </div>
+</div>
+

@@ -5,6 +5,34 @@
       "PackagePath": "staticwebassets/TheWaterProject.bundle.scp.css"
     },
     {
+      "Id": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/wwwroot/Assets/2.png",
+      "PackagePath": "staticwebassets/Assets/2.png"
+    },
+    {
+      "Id": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/wwwroot/Assets/contentCreator.png",
+      "PackagePath": "staticwebassets/Assets/contentCreator.png"
+    },
+    {
+      "Id": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/wwwroot/Assets/daniel-k-cheung-B7N0IjiIJYo-unsplash.jpg",
+      "PackagePath": "staticwebassets/Assets/daniel-k-cheung-B7N0IjiIJYo-unsplash.jpg"
+    },
+    {
+      "Id": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/wwwroot/Assets/firstLegoSet.png",
+      "PackagePath": "staticwebassets/Assets/firstLegoSet.png"
+    },
+    {
+      "Id": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/wwwroot/Assets/legoCompetition.png",
+      "PackagePath": "staticwebassets/Assets/legoCompetition.png"
+    },
+    {
+      "Id": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/wwwroot/Assets/newspaper.png",
+      "PackagePath": "staticwebassets/Assets/newspaper.png"
+    },
+    {
+      "Id": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/wwwroot/Assets/summerCamp.png",
+      "PackagePath": "staticwebassets/Assets/summerCamp.png"
+    },
+    {
       "Id": "/Users/owner/RiderProjects/Intex2024/TheWaterProject/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },

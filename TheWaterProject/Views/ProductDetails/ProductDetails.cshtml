@@ -1,0 +1,79 @@
+
+@model TheWaterProject.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - TheWaterProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" asp-append-version="true"/>
+    
+    <style>
+        .add-to-cart {
+            background-color: #F06525;
+            align-self: center;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+<section class="product-display container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/img/AshokaSF.png" alt="Ahsoka's Starfighter and Vulture Droid" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <div class="product-info">
+                <h1 class="product-title" style="font-weight: bolder; font-size: 40px">Ahsoka's Starfighter and Vulture Droid</h1>
+                <br/>
+                <br/>
+                <span class="price" style="color: #F06525; font-weight: bolder; font-size: 36px">$150</span>
+                <br/>
+                <br/>
+                <span style="font-weight: bolder; font-size: 24px">Description: </span>
+                <br/>
+                <br/>
+                <p class="description">Using her wits, piloting skills and Jedi training, Ahsoka...</p>
+                <button class="btn rounded-pill add-to-cart">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>
+
+<!-- Add interactive elements as needed, such as Add to Cart button -->
+
+
+@* <h2>@Model.Name</h2> *@
+@* @Model.img_link *@
+@* <img src="~/img/AshokaSF.png" alt="Image of @Model.Name"/>   *@
+
+@* <p><strong>Price:</strong> $@Model.Price</p> *@
+@* <p><strong>Year:</strong> @Model.Year</p> *@
+@* <p><strong>Number of Parts:</strong> @Model.Num_Parts</p> *@
+@* <p><strong>Primary Color:</strong> @Model.Primary_Color</p> *@
+@* <p><strong>Description:</strong> @Model.Description</p> *@

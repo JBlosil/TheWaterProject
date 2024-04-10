@@ -6,6 +6,7 @@
 /.idea.TheWaterProject.iml
 /contentModel.xml
 /projectSettingsUpdater.xml
+
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
@@ -13,19 +14,19 @@
 /dataSources.local.xml
 
 # Added cache and specific project files to ignore
-project.assets.json
-project.nuget.cache
-project.packagespec.json
-rider.project.model.nuget.info
-rider.project.restore.info
-TheWaterProject.AssemblyInfo.cs
-TheWaterProject.AssemblyInfoInputs.cache
-TheWaterProject.assets.cache
-TheWaterProject.csproj.nuget.dgspec.json
-TheWaterProject.GeneratedMSBuildEditorConfig.editorconfig
-TheWaterProject.dll
-TheWaterProject.pdb
-TheWaterProject.sourcelink.json
+/project.assets.json
+/project.nuget.cache
+/project.packagespec.json
+/rider.project.model.nuget.info
+/rider.project.restore.info
+/TheWaterProject.AssemblyInfo.cs
+/TheWaterProject.AssemblyInfoInputs.cache
+/TheWaterProject.assets.cache
+/TheWaterProject.csproj.nuget.dgspec.json
+/TheWaterProject.GeneratedMSBuildEditorConfig.editorconfig
+/TheWaterProject.dll
+/TheWaterProject.pdb
+/TheWaterProject.sourcelink.json
 
 
 # Pattern-based ignores for similar files

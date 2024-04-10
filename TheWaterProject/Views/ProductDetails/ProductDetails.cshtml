@@ -1,0 +1,177 @@
+@using TheWaterProject.Controllers
+@model ProductDetailsViewModel
+
+@{
+    ViewData["Title"] = "Product Details";
+    
+}
+
+
+    
+<style>
+        .add-to-cart {
+            background-color: #F06525;
+            color: white;
+            border: none;
+            padding: 10px 0; /* Adjusted padding to have 0 on the sides */
+            cursor: pointer;
+            border-radius: 50px; /* Rounded-pill usually means fully rounded edges, 50px will enforce it if the button is not fully rounded */
+            font-size: 1em;
+            display: block; /* Makes the button a block-level element */
+            width: auto; /* Allows button to resize as per its container's width */
+            margin: 0 auto; /* Centers the button horizontally */
+        }
+        .product-display {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center; /* Centers items vertically */
+            justify-content: center; /* Centers items horizontally when there's extra space */
+        }
+
+        .img-fluid {
+            max-width: 100%; /* Makes the image responsive */
+            height: auto; /* Maintains aspect ratio */
+        }
+        .description {
+            display: -webkit-box;
+            -webkit-line-clamp: 6; /* Number of lines you want to display */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 20px; /* Adjust as needed */
+        }
+
+        .read-more {
+            display: none;
+            cursor: pointer;
+            color: #007bff; /* Bootstrap primary color, adjust as needed */
+            text-decoration: underline;
+            border: none;
+        }
+
+        .read-more.expanded + .description {
+            -webkit-line-clamp: none; /* Show all lines when expanded */
+        }
+        .product-meta {
+            margin-bottom: 15px; /* Adjust as needed */
+        }
+        .container {
+            padding-left: 15px; /* Slightly larger padding on smaller screens */
+            padding-right: 15px;
+        }
+        .rec-card {
+            border-radius: 20px; /* Adjust as needed for your design */
+            background-color: #ffe7d9;
+            margin-bottom: 20px; /* Space below the card */
+        }
+
+        .rec-card .card-img-top {
+            border-top-left-radius: 20px; /* Match parent border-radius */
+            border-top-right-radius: 20px;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensure the image covers the area without stretching */
+        }
+
+        .card-body {
+            padding: 0.5rem; /* Reduced padding */
+        }
+
+        .product-price, .product-rating {
+            display: block; /* Stack price and rating */
+            margin-bottom: 0.25rem; /* Space between price and rating */
+        }
+    </style>
+
+
+<section class="product-display container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.Product.img_link" alt="@Model.Product.Name" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <div class="product-info">
+                <h1 class="product-title" style="font-weight: bolder; font-size: 40px">@Model.Product.Name</h1>
+                <br/>
+                <span class="price" style="color: #F06525; font-weight: bolder; font-size: 36px">$@Model.Product.Price</span>
+                <br/>
+                <br/>
+                <span style="font-weight: bolder; font-size: 24px">Description: </span>
+                <p class="description">@Model.Product.Description</p><a class="read-more">Read More</a>
+                <button class="btn btn-primary rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+</section>
+<br/>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <i class="fa-solid fa-calendar-days fa-2xl"></i> <p>@Model.Product.Year</p>
+        </div>
+        <div class="col text-center">
+            <i class="fa-solid fa-cubes fa-2xl"></i> <p>@Model.Product.Num_Parts</p>
+        </div>
+        <div class="col text-center">
+            <i class="fas fa-star fa-2xl" aria-hidden="true"></i> <p>Avg 4/5</p>
+        </div>
+        <div class="col text-center">
+            <i class="fas fa-tint fa-2xl" aria-hidden="true"></i> <p>@Model.Product.Primary_Color & @Model.Product.Secondary_Color</p>
+        </div>
+        <div class="col text-center">
+            <i class="fa-solid fa-table fa-2xl"></i> <p>@Model.Product.Category</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const readMoreButton = document.querySelector('.read-more');
+        const description = document.querySelector('.description');
+
+        // Change this threshold based on your average character per line
+        const charThreshold = 400;
+
+        if (description.innerText.length > charThreshold) {
+            readMoreButton.style.display = 'block';
+        }
+
+        readMoreButton.addEventListener('click', () => {
+            const isExpanded = readMoreButton.classList.toggle('expanded');
+            readMoreButton.textContent = isExpanded ? 'Read Less' : 'Read More';
+            description.style.display = isExpanded ? 'block' : '-webkit-box';
+        });
+    });
+</script>
+
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center ">
+            <span style="font-size: 36px; font-weight: bold; color: #F06525; stroke-width: 10pt">More Like This</span>
+        </div>
+    </div>
+</div>
+
+@* @foreach (var product in Model) *@
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card rec-card">
+                    <img src="img link" class="card-img-top" alt="product name">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Some Lego Build</h5>
+                        <p class="product-price">$000</p>
+                        <p class="product-rating">Avg x/ 5 Stars</p>
+                        <a href="#" class="btn btn-primary add-to-cart">ADD TO CART</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above block for each product, or use a loop -->
+        </div>
+    </div>

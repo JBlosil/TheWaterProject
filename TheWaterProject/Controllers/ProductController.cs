@@ -17,7 +17,7 @@ public class ProductController : Controller
     {
         int pageSize = 5;
 
-        var blah = new ProductsListViewModel()
+        var products = new ProductsListViewModel()
         {
             Products = _repo.Products
                 .Where(x => x.Category==productCategory || productCategory == null)
@@ -35,6 +35,6 @@ public class ProductController : Controller
             CurrentProductCategory = productCategory
         };
         
-        return View(blah);
+        return View(products);
     }
 }

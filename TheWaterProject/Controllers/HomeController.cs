@@ -1,12 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using TheWaterProject.Models;
+using TheWaterProject.Models.ViewModels;
 
 namespace TheWaterProject.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private IIntexRepository _repo;
+
+    public HomeController(IIntexRepository temp)
     {
-        return View();
+        _repo = temp;
+    }
+    public IActionResult Index(int? customer_ID)
+    {
+        int pageSize = 5;
+
+        var blah2 = new ProductsListViewModel()
+        {
+            Products = _repo.Products,
+        };
+        return View(blah2);
     }
 }

@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<IntexDbContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:IntexConnection"]);
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
 });
 
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();

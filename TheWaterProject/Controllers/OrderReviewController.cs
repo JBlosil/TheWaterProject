@@ -14,7 +14,7 @@ public class OrderReviewController : Controller
         _context = context;
     }
 
-    public IActionResult OrderReview(int pageNum = 1, string searchQuery = null)
+    public IActionResult OrderReview(int pageNum = 1, string searchQuery = null, string orderStatus = null)
     {
         int pageSize = 50; // Number of items per page
 
@@ -24,7 +24,10 @@ public class OrderReviewController : Controller
         {
             ordersQuery = ordersQuery.Where(o => o.TransactionId == transactionId);
         }    
-        
+        if (!string.IsNullOrEmpty(orderStatus))
+        {
+            ordersQuery = ordersQuery.Where(o => o.OrderStatus == orderStatus); 
+        }
         var orders = ordersQuery
             .OrderByDescending(o => o.Date) // Assuming 'Date' is the date of the transaction
             .Skip((pageNum - 1) * pageSize)
@@ -32,6 +35,7 @@ public class OrderReviewController : Controller
             .Select(o => new OrderReviewViewModel.OrderDetailsViewModel()
              {
                  TransactionId = o.TransactionId,
+                 OrderStatus = o.OrderStatus,
                  Amount = o.Amount,
                  Date = o.Date,
                  TransactionCountry = o.CountryOfTransaction,

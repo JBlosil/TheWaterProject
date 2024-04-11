@@ -24,36 +24,35 @@
 
     <div class="row mb-3">
         <div class="col-8">
-            <div class="dropdown d-inline-block">
-                <i class="fa-solid fa-gear"></i>
-                <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="actionsDropdown" data-bs-toggle="dropdown">
-                    Actions on Selected Rows
-                </button>
-                <div class="dropdown-menu" aria-labelledby="actionsDropdown">
-                    <a class="dropdown-item" href="#">Set as Processing</a>
-                    <a class="dropdown-item" href="#">Set as On Hold for Fraud</a>
-                    <a class="dropdown-item" href="#">Set as Shipped</a>
-                    <a class="dropdown-item" href="#">Set as Canceled</a>
-                    <a class="dropdown-item" href="#">Set as Completed</a>
-
-
+            <form asp-action="OrderReview" method="get">
+                <div class="dropdown d-inline-block">
+                    <i class="fa-solid fa-gear"></i>
+                    <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="actionsDropdown" data-bs-toggle="dropdown">
+                        Actions on Selected Rows
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="actionsDropdown">
+                        <a class="dropdown-item" href="#">Set as Processing</a>
+                        <a class="dropdown-item" href="#">Set as On Hold for Fraud</a>
+                        <a class="dropdown-item" href="#">Set as Shipped</a>
+                        <a class="dropdown-item" href="#">Set as Canceled</a>
+                        <a class="dropdown-item" href="#">Set as Completed</a>
+                    </div>
+                 </div>
+                <div class="dropdown d-inline-block ml-2">
+                    <i class="fa-regular fa-filter"></i>
+                    <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        All
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="statusDropdown">
+                        <button class="dropdown-item" type="submit" name="orderStatus" value="OrderPlaced">Order Placed</button>
+                        <button class="dropdown-item" type="submit" name="orderStatus" value="Processing">Processing</button>
+                        <button class="dropdown-item" type="submit" name="orderStatus" value="OnHoldForFraud">On Hold for Fraud</button>
+                        <button class="dropdown-item" type="submit" name="orderStatus" value="Shipped">Shipped</button>
+                        <button class="dropdown-item" type="submit" name="orderStatus" value="Canceled">Canceled</button>
+                        <button class="dropdown-item" type="submit" name="orderStatus" value="Completed">Completed</button>
+                    </div>
                 </div>
-            </div>
-
-            <div class="dropdown d-inline-block ml-2">
-                <i class="fa-regular fa-filter"></i>
-                <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    All
-                </button>
-                <div class="dropdown-menu" aria-labelledby="statusDropdown">
-                    <a class="dropdown-item" href="#">Order Placed</a>
-                    <a class="dropdown-item" href="#">Processing</a>
-                    <a class="dropdown-item" href="#">On Hold for Fraud</a>
-                    <a class="dropdown-item" href="#">Shipped</a>
-                    <a class="dropdown-item" href="#">Canceled</a>
-                    <a class="dropdown-item" href="#">Completed</a>
-                </div>
-            </div>
+            </form>
         </div>
 
         <div class="col-4 text-right">
@@ -81,7 +80,7 @@
         {
         <tr>
             <td>@order.TransactionId</td>
-            <td></td> <!-- status -->
+            <td>@order.OrderStatus</td> <!-- status -->
             <td>@order.CustomerName</td>
             <td>@order.Date</td>
             <td>$@order.Amount</td>

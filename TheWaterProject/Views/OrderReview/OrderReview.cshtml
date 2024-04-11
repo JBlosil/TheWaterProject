@@ -23,7 +23,7 @@
     </div>  
 
     <div class="row mb-3">
-        <div class="col-8">
+        <div class="col-6">
             <form asp-action="OrderReview" method="get">
                 <div class="dropdown d-inline-block">
                     <i class="fa-solid fa-gear"></i>
@@ -44,6 +44,7 @@
                         All
                     </button>
                     <div class="dropdown-menu" aria-labelledby="statusDropdown">
+                        <button class="dropdown-item" type="submit" name="orderStatus" value="">All</button>
                         <button class="dropdown-item" type="submit" name="orderStatus" value="OrderPlaced">Order Placed</button>
                         <button class="dropdown-item" type="submit" name="orderStatus" value="Processing">Processing</button>
                         <button class="dropdown-item" type="submit" name="orderStatus" value="OnHoldForFraud">On Hold for Fraud</button>
@@ -54,13 +55,19 @@
                 </div>
             </form>
         </div>
+        
+        <form asp-action="OrderReview" method="get">
+            <div class="col-6 text-end">
+                <span class="pr-2 align-middle">From</span>
+                <i class="fa-solid fa-calendar-days"></i>
+                <input name="startDate" type="date" class="form-control d-inline-block w-auto" value="@DateTime.Today.AddMonths(-6).ToString("yyyy-MM-dd")"/>
+                <span class="px-2 align-middle">to</span>
+                <i class="fa-solid fa-calendar-days "></i>
+                <input name="endDate" type="date" class="form-control d-inline-block w-auto" value="@DateTime.Today.ToString("yyyy-MM-dd")"/>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </form>
 
-        <div class="col-4 text-right">
-            <span class="pr-2 align-middle">From</span>
-            <input type="date" class="form-control d-inline-block w-auto" value="<!-- 6 months ago date -->" />
-            <span class="px-2 align-middle">to</span>
-            <input type="date" class="form-control d-inline-block w-auto" value="<!-- Today's date -->" />
-        </div>
     </div>
     <table class="table">
         <thead>

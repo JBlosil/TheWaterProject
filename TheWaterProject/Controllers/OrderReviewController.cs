@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using TheWaterProject.Models;
 using TheWaterProject.Models.ViewModels;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 public class OrderReviewController : Controller
 {
@@ -16,18 +17,23 @@ public class OrderReviewController : Controller
     {
         int pageSize = 50; // Number of items per page
         var ordersQuery = _context.Orders
+            .Include(o => o.Customer)
             .OrderByDescending(o => o.Date) // Assuming 'Date' is the date of the transaction
             .Skip((pageNum - 1) * pageSize)
             .Take(pageSize);
             
          var orders = ordersQuery  
-             .Select(o => new OrderReviewViewModel()
-                 {
-                     TransactionId = o.TransactionId
-                     Amount = o.
-                 } 
-             )
-            .ToList();
+             .Select(o => new OrderReviewViewModel.OrderDetailsViewModel()
+             {
+                 TransactionId = o.TransactionId,
+                 Amount = o.Amount,
+                 Date = o.Date,
+                 TransactionCountry = o.CountryOfTransaction,
+                 ShippingAddress = o.ShippingAddress,
+                 Fraud = o.Fraud,
+                 CustomerName = o.Customer.FirstName + " " + o.Customer.LastName 
+             })
+             .ToList();
         
         var viewModel = new OrderReviewViewModel
         {

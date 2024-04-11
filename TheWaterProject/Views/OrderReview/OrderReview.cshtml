@@ -21,6 +21,7 @@
             <th>Customer Name</th>
             <th>Date Placed</th>
             <th>Amount</th>
+            <th>Transaction Country</th>
             <th>Shipping Address</th>
             <th>Likely Fraud</th>
         </tr>
@@ -30,10 +31,11 @@
         {
         <tr>
             <td>@order.TransactionId</td>
-            <td></td> <!-- Assuming you will fill these in later -->
-            <td></td>
+            <td></td> <!-- status -->
+            <td>@order.CustomerName</td>
             <td>@order.Date</td>
             <td>$@order.Amount</td>
+            <td>@order.TransactionCountry</td>
             <td>@order.ShippingAddress</td>
             <td>@order.Fraud</td>
         </tr>
@@ -43,10 +45,10 @@
     <!-- Pagination here -->
 </div>
 
-<div class="container">
+<div class="container align-content-center">
     <div class="pagination-container">
-        <span>@(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage - (Model.PaginationInfo.ItemsPerPage - 1)) to @Math.Min(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage, Model.PaginationInfo.TotalItems) of @Model.PaginationInfo.TotalItems</span>
         <a href="@Url.Action("OrderReview", new { pageNum = Model.PaginationInfo.CurrentPage - 1 })" class="btn btn-default @(Model.PaginationInfo.CurrentPage == 1 ? "disabled" : "")">Previous</a>
+        <span>@(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage - (Model.PaginationInfo.ItemsPerPage - 1)) to @Math.Min(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage, Model.PaginationInfo.TotalItems) of @Model.PaginationInfo.TotalItems</span>
         <a href="@Url.Action("OrderReview", new { pageNum = Model.PaginationInfo.CurrentPage + 1 })" class="btn btn-default @(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage >= Model.PaginationInfo.TotalItems ? "disabled" : "")">Next</a>
     </div>
 </div>

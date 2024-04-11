@@ -75,4 +75,63 @@ public class OrderReviewController : Controller
 
         return View(viewModel);
     }
+    // [HttpPost]
+    // public async Task<IActionResult> PerformMassAction(string action, int[] selectedTransactions)
+    // {
+    //     // First, ensure we have orders to work with
+    //     if (selectedTransactions == null || !selectedTransactions.Any())
+    //     {
+    //         // Optionally, add a message to TempData or ViewBag to inform no orders were selected
+    //         return RedirectToAction("OrderReview");
+    //     }
+    //
+    //     // Retrieve the orders from the database
+    //     var ordersToUpdate = await _context.Orders
+    //         .Where(o => selectedTransactions.Contains(o.TransactionId)) // Assuming TransactionId is your identifier
+    //         .ToListAsync();
+    //
+    //     switch (action)
+    //     {
+    //         case "processing":
+    //             foreach (var order in ordersToUpdate)
+    //             {
+    //                 order.OrderStatus = "Processing"; // Assuming OrderStatus is a string
+    //             }
+    //             break;
+    //         case "onHold":
+    //             foreach (var order in ordersToUpdate)
+    //             {
+    //                 order.OrderStatus = "On Hold for Fraud"; // Adjust the status as per your application's requirements
+    //             }
+    //             break;
+    //         case "shipped":
+    //             foreach (var order in ordersToUpdate)
+    //             {
+    //                 order.OrderStatus = "Shipped";
+    //             }
+    //             break;
+    //         case "canceled":
+    //             foreach (var order in ordersToUpdate)
+    //             {
+    //                 order.OrderStatus = "Canceled";
+    //             }
+    //             break;
+    //         case "completed":
+    //             foreach (var order in ordersToUpdate)
+    //             {
+    //                 order.OrderStatus = "Completed";
+    //             }
+    //             break;
+    //     }
+    //
+    //     // Save changes if any updates were made
+    //     if (ordersToUpdate.Any())
+    //     {
+    //         await _context.SaveChangesAsync();
+    //     }
+    //
+    //     // Redirect back to the OrderReview page
+    //     return RedirectToAction("OrderReview");
+    // }
+
 }

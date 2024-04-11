@@ -24,20 +24,22 @@
 
     <div class="row mb-3">
         <div class="col-6">
+            @* <form asp-action="PerformMassAction" asp-controller="OrderReview" method="post"> *@
+            @*     <div class="dropdown d-inline-block"> *@
+            @*         <i class="fa-solid fa-gear"></i> *@
+            @*         <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="actionsDropdown" data-bs-toggle="dropdown"> *@
+            @*             Actions on Selected Rows *@
+            @*         </button> *@
+            @*         <div class="dropdown-menu" aria-labelledby="actionsDropdown"> *@
+            @*             <a type="submit" class="dropdown-item" name="action" value="processing">Set as Processing</a> *@
+            @*             <a type="submit" class="dropdown-item" name="action" value="onHold">Set as On Hold for Fraud</a> *@
+            @*             <a type="submit" class="dropdown-item" name="action" value="shipped">Set as Shipped</a> *@
+            @*             <a type="submit" class="dropdown-item" name="action" value="canceled">Set as Canceled</a> *@
+            @*             <a type="submit" class="dropdown-item" name="action" value="Completed">Set as Completed</a> *@
+            @*         </div> *@
+            @*     </div> *@
+            @* </form> *@
             <form asp-action="OrderReview" method="get">
-                <div class="dropdown d-inline-block">
-                    <i class="fa-solid fa-gear"></i>
-                    <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="actionsDropdown" data-bs-toggle="dropdown">
-                        Actions on Selected Rows
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="actionsDropdown">
-                        <a class="dropdown-item" href="#">Set as Processing</a>
-                        <a class="dropdown-item" href="#">Set as On Hold for Fraud</a>
-                        <a class="dropdown-item" href="#">Set as Shipped</a>
-                        <a class="dropdown-item" href="#">Set as Canceled</a>
-                        <a class="dropdown-item" href="#">Set as Completed</a>
-                    </div>
-                 </div>
                 <div class="dropdown d-inline-block ml-2">
                     <i class="fa-regular fa-filter"></i>
                     <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,7 +60,6 @@
 
         <div class="col-6 text-end">
             <form asp-action="OrderReview" method="get">
-            
                 <span class="pr-2 align-middle">From</span>
                 <i class="fa-solid fa-calendar-days"></i>
                 <input name="startDate" type="date" class="rounded w-auto" value=""/>
@@ -74,6 +75,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th><input type="checkbox" id="selectAll" /></th>
             <th>Transaction ID</th>
             <th>Status</th>
             <th>Customer Name</th>
@@ -87,15 +89,16 @@
         <tbody>
         @foreach (var order in Model.Orders)
         {
-        <tr>
-            <td>@order.TransactionId</td>
-            <td>@order.OrderStatus</td> <!-- status -->
-            <td>@order.CustomerName</td>
-            <td>@(order.Date.HasValue ? order.Date.Value.ToString("MM/dd/yyyy") : "")</td>            <td>$@order.Amount</td>
-            <td>@order.TransactionCountry</td>
-            <td>@order.ShippingAddress</td>
-            <td>@order.Fraud</td>
-        </tr>
+            <tr>
+                <td><input type="checkbox" class="order-checkbox" value="@order.TransactionId" name="selectedOrders" /></td>
+                <td>@order.TransactionId</td>
+                <td>@order.OrderStatus</td> <!-- status -->
+                <td>@order.CustomerName</td>
+                <td>@(order.Date.HasValue ? order.Date.Value.ToString("MM/dd/yyyy") : "")</td> <td>$@order.Amount</td>
+                <td>@order.TransactionCountry</td>
+                <td>@order.ShippingAddress</td>
+                <td>@order.Fraud</td>
+            </tr>
         }
         </tbody>
     </table>
@@ -110,3 +113,38 @@
 
     </div>
 </div>
+
+@* <script> *@
+@* document.getElementById('selectAll').addEventListener('click', function(event) { *@
+@*     var checkboxes = document.getElementsByClassName('order-checkbox'); *@
+@*     for (var i = 0; i < checkboxes.length; i++) { *@
+@*         checkboxes[i].checked = this.checked; *@
+@*     } *@
+@* }); *@
+@* document.getElementById('massActionForm').addEventListener('submit', function(event) { *@
+@*     // Prevent the normal form submission *@
+@*     event.preventDefault(); *@
+@* *@
+@*     // Collect selected transaction IDs *@
+@*     var selectedTransactionIds = []; *@
+@*     var checkboxes = document.getElementsByClassName('order-checkbox'); *@
+@*     for (var i = 0; i < checkboxes.length; i++) { *@
+@*         if (checkboxes[i].checked) { *@
+@*             selectedTransactionIds.push(checkboxes[i].value); *@
+@*         } *@
+@*     } *@
+@* *@
+@*     // Add the transaction IDs to the form as hidden inputs *@
+@*     selectedTransactionIds.forEach(id => { *@
+@*         var input = document.createElement('input'); *@
+@*         input.type = 'hidden'; *@
+@*         input.name = 'selectedTransactions'; // Updated name to reflect the domain language *@
+@*         input.value = id; *@
+@*         this.appendChild(input); *@
+@*     }); *@
+@* *@
+@*     // Submit the form *@
+@*     this.submit(); *@
+@* }); *@
+@* *@
+@* </script> *@

@@ -18,7 +18,12 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0;
+  font-family: 'Antic', sans-serif;
 }
 
 .antic-regular {
@@ -27,77 +32,8 @@ body {
   font-style: normal;
 }
 
-/* NAV BAR STYLES */
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-div {
-  box-sizing: border-box;
-}
-
-/* Base styles for nav items */
-.nav-item, .nav-item-admin {
-  color: white;
-  font-size: 40px;
-  font-family: 'Antic', sans-serif;
-  font-weight: 400;
-  margin: 0 20px;
-  flex: 1; /* This allows the items to grow and shrink as needed */
-  text-align: center; /* Center the text inside each nav item */
-}
-
-/* Container holding the nav items */
-.nav-container {
-  display: flex;
-  justify-content: space-around; /* This will space out the nav items evenly */
-  align-items: center;
-  width: 100%; /* Take full width of its parent */
-  height: 100px;
-  background: #F06525;
-  border-radius: 30px;
-}
-
-/* Responsive font sizes */
-@media (max-width: 1024px) {
-  .nav-item, .nav-item-admin {
-    font-size: 30px; /* Smaller font size for tablet screens */
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-item, .nav-item-admin {
-    font-size: 20px; /* Even smaller font size for mobile screens */
-  }
-}
-
-/* FOOTER STYLES */
-.Footer {
-  width: 100%;
-  height: 150px;
-  background: #5271FF;
-  border-radius: 30px;
-  color: white;
-  position: relative;
-}
-
-.footer-item {
-  position: absolute;
-  font-size: 16px;
-  font-family: Antic, sans-serif;
-  font-weight: 400;
-}
-
-
 /* INDEX STYLING */
 /* General styles for the layout */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Antic', sans-serif;
-}
 
 /* Centering the logo right under the navbar */
 .logo {
@@ -106,7 +42,9 @@ body {
   height: 200px;
   border-radius: 50%;
   margin: 0 auto; /* Centers the image */
-  margin-top: -100px; /* Adjusts vertical position; could be changed based on navbar height */
+  margin-top: 70px; /* Adjusts vertical position; could be changed based on navbar height */
+  margin-bottom: 10px;
+  border: 2px solid black;
 }
 
 /* Welcome text styling */

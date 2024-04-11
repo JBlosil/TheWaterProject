@@ -11,40 +11,126 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Antic&display=swap" rel="stylesheet">
+        
+        <style>
+              .custom-navbar {
+                background-color: #f06525; /* Orange background */
+                border-radius: 10px; /* Rounded corners */
+                position: fixed;
+                top: 0;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                width: 97.5%;
+                z-index: 1000; /* Ensure navbar stays on top of other content */
+                
+              }
+              .custom-navbar .navbar-brand,
+              .custom-navbar .nav-link,
+              .custom-navbar .navbar-toggler {
+                color: white; /* White text for all navbar elements */
+              }
+              .custom-navbar .nav-link.active {
+                color: white;
+                font-weight: bold; /* Bold text for active link */
+              }
+              .custom-navbar .navbar-toggler {
+                border-color: transparent; /* Remove default border color */
+              }
+              .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Custom SVG for white icon */
+              }
+              .custom-navbar .nav-link:hover {
+                    font-size: 1.1em; /* Slightly larger font on hover */
+                }
+                
+              /*FOOTER STYLES*/
+              .footer-container {
+                background-color: #5271FF; /* Blue background */
+                color: white; /* White text */
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                }
+                .footer-nav {
+                  justify-content: space-between; /* Space between logo and nav items */
+                }
+                .footer-nav .nav-item .nav-link {
+                  color: white; /* White text for links */
+                }
+                /* Logo styles */
+                .footer-logo {
+                  display: flex;
+                  align-items: center;
+                }
+            </style>
 </head>
 <body>
-    <div style="display: flex; flex-direction: column; min-height: 100vh;">
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
         
-        <!-- NAVBAR -->
-        <header>
-            <div class="nav-container">
-                <img class="nav-logo" src="Assets/2.png" />
-                <div class="nav-item">ABOUT</div>
-                <div class="nav-item">SHOP</div>
-                <div class="nav-item-admin">USERS</div>
-                <div class="nav-item-admin">PRODUCTS</div>
-                <div class="nav-item-admin">ORDERS</div>
-                <div class="nav-item">LOGIN</div>
-                <img class="ShoppingCart" src="https://via.placeholder.com/60x60" />
-            </div>
-        </header>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="~/Assets/LOGO.png" alt="Brickwell Logo" width="40" height="40" style="border-radius:50%; width:40px; height:40px; object-fit:cover;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">USERS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">PRODUCTS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ORDERS</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
         
          
-        <!-- BODY -->
-        <main style="flex-grow: 1;">
-            @RenderBody()
-        </main>
+  <!-- BODY -->
+  <main style="flex-grow: 1;">
+    @RenderBody()
+  </main>
         
         
-        <!-- FOOTER -->
-        <footer class="Footer">
-            <div class="footer-item">ABOUT</div>
-            <div class="footer-item">CONNECT WITH US!</div>
-            <div class="footer-item">PRIVACY</div>
-            <div class="footer-item-back-to-top">BACK TO TOP</div>
-            <img src="../wwwroot/Assets/2.png" style="width: 100px; height: 100px; position: absolute; left: 22px; top: 25px; border-radius: 50%;">
-        </footer>
+  <!-- FOOTER -->
+  <div class="footer-container">
+    <div class="row">
+      <div class="col-md-4 footer-logo">
+        <!-- Add your logo image inside the div -->
+        <img src="~/Assets/LOGO.png" alt="Brickwell Logo" width="30" height="30" style="border-radius:50%; width:30px; height:30px; object-fit:cover;">
+      </div>
+      <div class="col-md-8">
+        <ul class="nav justify-content-end footer-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">PRIVACY</a>
+          </li>
+        
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

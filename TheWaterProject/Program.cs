@@ -4,6 +4,7 @@ using TheWaterProject.Models;
 using Microsoft.AspNetCore.Identity;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,9 @@ builder.Services.AddDbContext<IntexDbContext>(options =>
     options.UseSqlServer(connectionString); // Direct use of the connection string
 });
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<IntexDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<IntexDbContext>();
 
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
 
@@ -67,5 +70,38 @@ app.MapControllerRoute ("productDetails", "ProductDetails/{productId}", new { Co
 app.MapDefaultControllerRoute();
 
 app.MapRazorPages();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    var roles = new[] { "Admin", "Customer" };
+
+    foreach (var role in roles)
+    {
+        
+        if (! await roleManager.RoleExistsAsync(role)) await roleManager.CreateAsync(new IdentityRole(role));
+        
+    }
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    string email = "admin@admin.com";
+    string password = "Admin1234!";
+
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        var user = new IdentityUser();
+        user.UserName = email;
+        user.Email = email;
+
+        await userManager.CreateAsync(user, password);
+
+        await userManager.AddToRoleAsync(user, "Admin");
+    }
+}
 
 app.Run();

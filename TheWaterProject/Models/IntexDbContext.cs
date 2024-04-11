@@ -24,4 +24,6 @@ public class IntexDbContext : IdentityDbContext
 
     public DbSet<UserRole> UserRoles { get; set; }
     
+    public DbSet<TopProducts> TopProducts { get; set; }
+    
 }

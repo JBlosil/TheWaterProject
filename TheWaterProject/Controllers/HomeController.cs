@@ -18,7 +18,7 @@ public class HomeController : Controller
 
         var blah2 = new ProductsListViewModel()
         {
-            Products = _repo.Products,
+            TopProducts = _repo.TopProducts,
         };
         return View(blah2);
     }

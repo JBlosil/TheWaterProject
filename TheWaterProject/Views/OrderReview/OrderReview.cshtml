@@ -2,12 +2,16 @@
 
 @{
     ViewData["Title"] = "Order Review";
-    Layout = null;
+
 }
 
-<!-- Bootstrap table for orders -->
+<style>
+    .main-content {
+        margin-top: 100px; /* Adjust this value to the height of your header */
+    }
+</style>
 
-<div class="container mt-3">
+<div class="container mt-5"> <!-- Increased margin-top to mt-5 -->
     <h2>Orders</h2>
     <table class="table">
         <thead>
@@ -24,15 +28,15 @@
         <tbody>
         @foreach (var order in Model.Orders)
         {
-            <tr>
-                <td>@order.TransactionId</td>
-                <td></td>@* @order.Status *@
-                <td></td>@* @order.CustomerName *@
-                <td>@order.Date</td>
-                <td>$@order.Amount</td>
-                <td>@order.ShippingAddress</td>
-                <td>@order.Fraud </td>
-            </tr>
+        <tr>
+            <td>@order.TransactionId</td>
+            <td></td> <!-- Assuming you will fill these in later -->
+            <td></td>
+            <td>@order.Date</td>
+            <td>$@order.Amount</td>
+            <td>@order.ShippingAddress</td>
+            <td>@order.Fraud</td>
+        </tr>
         }
         </tbody>
     </table>

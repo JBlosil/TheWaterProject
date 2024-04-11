@@ -13,7 +13,7 @@ public class ProductDetailsController : Controller
     {
         _repo = temp;
     }
-
+  
     public IActionResult ProductDetails(int productId)
     {
         var product = _repo.Products.FirstOrDefault(p => p.product_ID == productId);

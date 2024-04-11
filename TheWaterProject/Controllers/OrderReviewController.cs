@@ -3,6 +3,7 @@ using TheWaterProject.Models;
 using TheWaterProject.Models.ViewModels;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 public class OrderReviewController : Controller
 {
@@ -13,10 +14,19 @@ public class OrderReviewController : Controller
         _context = context;
     }
 
-    public IActionResult OrderReview(int pageNum = 1)
+    public IActionResult OrderReview(int pageNum = 1, string searchQuery = null)
     {
         int pageSize = 50; // Number of items per page
+        
         var ordersQuery = _context.Orders
+
+        if (!StringGuidConverter.IsNullOrEmpty(searchQuery))
+        {
+            if (int.TryParse(searchQuery, out int transactionId))
+            {
+                ordersQuery = ordersQuery.Where(o => 0.TransactionID == transactionId);
+            }    
+        }    
             .Include(o => o.Customer)
             .OrderByDescending(o => o.Date) // Assuming 'Date' is the date of the transaction
             .Skip((pageNum - 1) * pageSize)

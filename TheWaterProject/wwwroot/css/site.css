@@ -19,7 +19,7 @@ html {
 
 body {
   margin-bottom: 40px;
-  margin-top: 20px;
+  margin-top: 80px;
   margin-left: 20px;
   margin-right: 20px;
   padding: 0;
@@ -30,6 +30,18 @@ body {
   font-family: "Antic", sans-serif;
   font-weight: 400;
   font-style: normal;
+} 
+
+.cookies {
+  position: fixed; /* Use absolute if you want it to move with the page scroll */
+  bottom: 30px; /* 60px from the top */
+  left: 90%; 
+  transform: translateX(-50%); /* Adjust horizontal positioning */
+  width: 400px; /* Set a width for your popup */
+  height: auto; /* Adjust height as needed */
+  background-color: #cff4fc; /* Background color for the popup */
+  z-index: 1000; /* Ensure it's on top of other content */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Optional shadow for popup effect */
 }
 
 /* INDEX STYLING */
@@ -42,7 +54,7 @@ body {
   height: 200px;
   border-radius: 50%;
   margin: 0 auto; /* Centers the image */
-  margin-top: 70px; /* Adjusts vertical position; could be changed based on navbar height */
+  margin-top: 10px; /* Adjusts vertical position; could be changed based on navbar height */
   margin-bottom: 10px;
   border: 2px solid black;
 }

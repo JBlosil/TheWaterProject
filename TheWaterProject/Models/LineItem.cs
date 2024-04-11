@@ -6,7 +6,7 @@ namespace TheWaterProject.Models;
 
 public class LineItem
 {
-
+    [Key]
     public int TransactionId { get; set; }
 
     public int ProductId { get; set; }

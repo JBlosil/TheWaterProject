@@ -1,16 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TheWaterProject.Models;
+using Microsoft.AspNetCore.Identity;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// key vault
+ConfigurationBuilder azureBuilder = new ConfigurationBuilder();
+azureBuilder.AddAzureKeyVault(new Uri("https://intex313secrets.vault.azure.net/"), new DefaultAzureCredential());
+IConfiguration configuration = azureBuilder.Build();
+string connectionString = configuration["ServerConnectionString"];
+
+builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = configuration["GoogleClientID"];
+    googleOptions.ClientSecret = configuration["GoogleClientSecret"];
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<IntexDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
+    options.UseSqlServer(connectionString); // Direct use of the connection string
 });
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<IntexDbContext>();
 
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
 

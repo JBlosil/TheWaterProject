@@ -71,15 +71,15 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute("default","{controller=Home}/{action=Index}/{id?}");
-app.MapControllerRoute("pagenumandtype", "{productCategory}/Page{pageNum}", new { Controller = "Product", Action = "Index" });
-app.MapControllerRoute("products", "Products/{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Product", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("productDetails", "ProductDetails/{productId}", new { Controller = "ProductDetails", Action = "ProductDetails" });
-app.MapControllerRoute("OrderReview","OrderReview/{orderId?}",new { Controller = "OrderReview", Action = "OrderReview" });
+app.MapControllerRoute("pagenumandtype", "{productCategory}/Page{pageNum}", new { Controller = "Home", Action = "Products" });
+app.MapControllerRoute("products", "Products/{pageNum}", new { Controller = "Home", Action = "Products", pageNum = 1 });
+app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Home", Action = "Products", pageNum = 1 });
+app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Home", Action = "Products", pageNum = 1 });
+app.MapControllerRoute("productDetails", "ProductDetails/{productId}", new { Controller = "Home", Action = "ProductDetails" });
+app.MapControllerRoute("OrderReview","OrderReview/{orderId?}",new { Controller = "Home", Action = "OrderReview" });
 //CRUD PRODUCT ROUTES BELOW
-app.MapControllerRoute("ManageProducts", "Admin/ManageProducts", new { Controller = "Admin", Action = "ManageProducts" });
-app.MapControllerRoute("CreateProduct", "Admin/CreateProduct", new { Controller = "Admin", Action = "CreateProduct" });
+app.MapControllerRoute("ManageProducts", "Admin/ManageProducts", new { Controller = "Home", Action = "ManageProducts" });
+app.MapControllerRoute("CreateProduct", "Admin/CreateProduct", new { Controller = "Home", Action = "CreateProduct" });
 // CRUD USER ROUTES BELOW
 // (UNCOMMENT WHEN THE CONTROLLER IS FIXED)
 // app.MapControllerRoute("ManageUsers", "Admin/ManageUsers", new { Controller = "Admin", Action = "ManageUsers" });

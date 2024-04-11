@@ -6,4 +6,4 @@ public class OrdersViewModel
     public int? Fraud { get; set;}
 
     
-}
+} 

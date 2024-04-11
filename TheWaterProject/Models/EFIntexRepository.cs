@@ -14,4 +14,4 @@ public class EFIntexRepository : IIntexRepository
 
     
     // IQueryable<AspNetUser> AspNetUsers { get; }
-}
+} 

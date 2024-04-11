@@ -6,4 +6,4 @@ public interface IIntexRepository
     IQueryable<Order> Orders { get; }
     
     // IQueryable<AspNetUser> AspNetUsers { get; }
-}
+} 

@@ -70,8 +70,8 @@ still need to correctly link the button to the shopping page-->
 
 <!-- Boxes For Recommended Products -->
 <div class="row">
-    @foreach (Product p in Model.Products)
+    @foreach (TopProducts tp in Model.TopProducts)
     {
-        <partial name="ProductSummary" model="p"/>
+        <partial name="ProductSummary" model="tp"/>
     }
 </div>

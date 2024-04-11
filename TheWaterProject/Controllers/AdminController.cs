@@ -74,4 +74,93 @@ public class AdminController : Controller
 //         }
 //         return RedirectToAction(nameof(Index));
 //     }
+    
+
+
+
+//
+// THIS PART IS FOR THE PRODUCTS STUFF
+// A LOT IS COMMENTED OUT BECAUSE IT DOESN'T RECOGNIZE THINGS LIKE .Find, .Add, or .SaveChanges
+// I FORGET HOW TO DO THIS PART... IT'S SOMETHING WITH THE DB CONTEXT BUT IDK
+//
+
+ // GET: Admin/Products
+    public IActionResult ManageProducts()
+    {
+        var products = _repo.Products.ToList();
+        return View("ManageProducts", products);
+    }
+
+    // GET: Admin/Products/Create
+    public IActionResult CreateProducts()
+    {
+        return View("CreateProduct");
+    }
+
+    // POST: Admin/Products/Create
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult CreateProduct(Product product)
+    {
+        if (ModelState.IsValid)
+        {
+            // _repo.Products.Add(product);
+            // _repo.SaveChanges();
+            return RedirectToAction("ManageProducts");
+        }
+        return View("CreateProduct", product);
+    }
+
+    // // GET: Admin/Products/Edit/5
+    // public IActionResult EditProduct(int id)
+    // {
+    //     var product = _repo.Products.Find(id);
+    //     if (product == null)
+    //     {
+    //         return NotFound();
+    //     }
+    //     return View("ManageProducts", product);
+    // }
+
+    // POST: Admin/Products/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult EditProduct(int id, Product product)
+    {
+        if (id != product.product_ID)
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            // _repo.Update(product);
+            // _repo.SaveChanges();
+            return RedirectToAction("ManageProducts");
+        }
+        return View("ManageProducts");
+    }
+
+    // // GET: Admin/Products/Delete/5
+    // public IActionResult DeleteProduct(int id)
+    // {
+    //     var product = _repo.Products.Find(id);
+    //     if (product == null)
+    //     {
+    //         return NotFound();
+    //     }
+    //     return View("Products/Delete", product);
+    // }
+
+    // // POST: Admin/Products/Delete/5
+    // [HttpPost, ActionName("DeleteProduct")]
+    // [ValidateAntiForgeryToken]
+    // public IActionResult DeleteConfirmed(int id)
+    // {
+    //     var product = _repo.Products.Find(id);
+    //     _repo.Products.Remove(product);
+    //     _repo.SaveChanges();
+    //     return RedirectToAction("ManageProducts");
+    // }
+
 } 

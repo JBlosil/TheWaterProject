@@ -13,7 +13,7 @@ public partial class Order
     public string? OrderStatus { get; set; }
     public virtual Customer Customer { get; set; }
 
-    public string? Date { get; set; }
+    public DateTime? Date { get; set; }
 
     public string? DayOfWeek { get; set; }
 

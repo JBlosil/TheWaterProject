@@ -4,6 +4,7 @@ using TheWaterProject.Models.ViewModels;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using MPACKAGE.LibDomain.Extensions;
 
 public class OrderReviewController : Controller
 {
@@ -14,7 +15,7 @@ public class OrderReviewController : Controller
         _context = context;
     }
 
-    public IActionResult OrderReview(int pageNum = 1, string searchQuery = null, string orderStatus = null)
+    public IActionResult OrderReview(int pageNum = 1, string? searchQuery = null, string? orderStatus = null, DateTime? startDate = null, DateTime? endDate = null)
     {
         int pageSize = 50; // Number of items per page
 
@@ -26,10 +27,22 @@ public class OrderReviewController : Controller
         }    
         if (!string.IsNullOrEmpty(orderStatus))
         {
-            ordersQuery = ordersQuery.Where(o => o.OrderStatus == orderStatus); 
+            ordersQuery = ordersQuery.Where(o => EF.Functions.Like(o.OrderStatus, orderStatus)); 
         }
+        if (startDate.HasValue)
+        {
+            ordersQuery = ordersQuery.Where(o => o.Date >= startDate.Value);
+        }
+        if (endDate.HasValue)
+        {
+            // Adding one day to include the end date in the results
+            ordersQuery = ordersQuery.Where(o => o.Date <= endDate.Value.AddDays(1).AddTicks(-1));
+        }
+
+        int totalFilteredItems = ordersQuery.Count();
+        
         var orders = ordersQuery
-            .OrderByDescending(o => o.Date) // Assuming 'Date' is the date of the transaction
+            .OrderByDescending(o => o.Date) 
             .Skip((pageNum - 1) * pageSize)
             .Take(pageSize)
             .Select(o => new OrderReviewViewModel.OrderDetailsViewModel()
@@ -52,8 +65,12 @@ public class OrderReviewController : Controller
             {
                 CurrentPage = pageNum,
                 ItemsPerPage = pageSize,
-                TotalItems = _context.Orders.Count()
-            }
+                TotalItems = totalFilteredItems
+            },
+            SearchQuery = searchQuery, // Ensure these properties exist in your ViewModel
+            OrderStatus = orderStatus,
+            StartDate = startDate?.ToString("yyyy-MM-dd"),
+            EndDate = endDate?.ToString("yyyy-MM-dd")
         };
 
         return View(viewModel);

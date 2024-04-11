@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace TheWaterProject.Models;
 
-public class IntexDbContext : DbContext
+public class IntexDbContext : IdentityDbContext
 {
     public IntexDbContext(DbContextOptions<IntexDbContext> options)
         : base(options)
@@ -23,9 +24,4 @@ public class IntexDbContext : DbContext
 
     public DbSet<UserRole> UserRoles { get; set; }
     
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<LineItem>()
-            .HasKey(li => new { li.TransactionId, li.ProductId });
-    }
 }

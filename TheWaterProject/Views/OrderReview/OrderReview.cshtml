@@ -16,10 +16,10 @@
         <div class="col-6">
             <h2 class="mb-0" style="color:#51B59F">Orders</h2> <!-- No bottom margin for the title -->
         </div>
-        <div class="col-6 text-end">
-            <input type="search" class="form-control d-inline-block w-auto" placeholder="Search orders by ID" />
+        <form asp-action="OrderReview" method="get" class="col-6 text-end">
+            <input type="search"  name="searchQuery" class="form-control d-inline-block w-auto" placeholder="Search orders by ID" />
             <button class="btn btn-primary ml-2" >Search</button>
-        </div>
+        </form>
     </div>  
 
     <div class="row mb-3">
@@ -52,7 +52,6 @@
                     <a class="dropdown-item" href="#">Shipped</a>
                     <a class="dropdown-item" href="#">Canceled</a>
                     <a class="dropdown-item" href="#">Completed</a>
-
                 </div>
             </div>
         </div>

@@ -17,23 +17,19 @@ public class OrderReviewController : Controller
     public IActionResult OrderReview(int pageNum = 1, string searchQuery = null)
     {
         int pageSize = 50; // Number of items per page
-        
-        var ordersQuery = _context.Orders
 
-        if (!StringGuidConverter.IsNullOrEmpty(searchQuery))
+        IQueryable<Order> ordersQuery = _context.Orders.Include(o => o.Customer);
+
+        if (!string.IsNullOrEmpty(searchQuery) && int.TryParse(searchQuery, out int transactionId))
         {
-            if (int.TryParse(searchQuery, out int transactionId))
-            {
-                ordersQuery = ordersQuery.Where(o => 0.TransactionID == transactionId);
-            }    
+            ordersQuery = ordersQuery.Where(o => o.TransactionId == transactionId);
         }    
-            .Include(o => o.Customer)
+        
+        var orders = ordersQuery
             .OrderByDescending(o => o.Date) // Assuming 'Date' is the date of the transaction
             .Skip((pageNum - 1) * pageSize)
-            .Take(pageSize);
-            
-         var orders = ordersQuery  
-             .Select(o => new OrderReviewViewModel.OrderDetailsViewModel()
+            .Take(pageSize)
+            .Select(o => new OrderReviewViewModel.OrderDetailsViewModel()
              {
                  TransactionId = o.TransactionId,
                  Amount = o.Amount,

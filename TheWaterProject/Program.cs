@@ -60,12 +60,20 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllerRoute("default","{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute("pagenumandtype", "{productCategory}/Page{pageNum}", new { Controller = "Product", Action = "Index" });
 app.MapControllerRoute("products", "Products/{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
 app.MapControllerRoute("productCategory", "{productCategory}", new { Controller = "Product", Action = "Index", pageNum = 1 });
 app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Product", Action = "Index", pageNum = 1 });
-app.MapControllerRoute ("productDetails", "ProductDetails/{productId}", new { Controller = "ProductDetails", Action = "ProductDetails" });
-
+app.MapControllerRoute("productDetails", "ProductDetails/{productId}", new { Controller = "ProductDetails", Action = "ProductDetails" });
+app.MapControllerRoute("OrderReview","OrderReview/{orderId?}",new { Controller = "OrderReview", Action = "OrderReview" });
+//CRUD PRODUCT ROUTES BELOW
+app.MapControllerRoute("ManageProducts", "Admin/ManageProducts", new { Controller = "Admin", Action = "ManageProducts" });
+app.MapControllerRoute("CreateProduct", "Admin/CreateProduct", new { Controller = "Admin", Action = "CreateProduct" });
+// CRUD USER ROUTES BELOW
+// (UNCOMMENT WHEN THE CONTROLLER IS FIXED)
+// app.MapControllerRoute("ManageUsers", "Admin/ManageUsers", new { Controller = "Admin", Action = "ManageUsers" });
+// app.MapControllerRoute("CreateUser", "Admin/CreateUsers", new { Controller = "Admin", Action = "CreateUser" });
 
 app.MapDefaultControllerRoute();
 

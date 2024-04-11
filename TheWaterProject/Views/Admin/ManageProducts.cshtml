@@ -1,0 +1,45 @@
+@model IEnumerable<Product> 
+<!-- Not sure if this ^ is correct... -->
+
+<h2>Manage Products</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Product ID</th>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Num Parts</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Color (Primary)</th>
+        <th>Color (Secondary)</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.product_ID</td>
+            <td>@p.Name</td>
+            <td>@p.Year</td>
+            <td>@p.Num_Parts</td>
+            <td>@p.Price</td>
+            <td>@p.img_link</td>
+            <td>@p.Primary_Color</td>
+            <td>@p.Secondary_Color</td>
+            <td>@p.Description</td>
+            <td>@p.Category</td>
+            <td>
+                @Html.ActionLink("Edit", "EditProduct", new { id = p.product_ID }) |
+                @* @Html.ActionLink("Delete", "DeleteProduct", new { id = p.product_ID }) *@
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@Html.ActionLink("Add New Product", "CreateProduct")

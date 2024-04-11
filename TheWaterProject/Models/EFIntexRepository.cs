@@ -11,4 +11,5 @@ public class EFIntexRepository : IIntexRepository
 
     public IQueryable<Product> Products => _context.Products;
     public IQueryable<TopProducts> TopProducts => _context.TopProducts;
+    public IQueryable<Order> Orders => _context.Orders;
 }

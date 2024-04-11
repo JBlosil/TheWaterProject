@@ -8,10 +8,12 @@ public partial class Order
 {
     [Key]
     public int TransactionId { get; set; }
-
+    
     public int? CustomerId { get; set; }
+    public string? OrderStatus { get; set; }
+    public virtual Customer Customer { get; set; }
 
-    public string? Date { get; set; }
+    public DateTime? Date { get; set; }
 
     public string? DayOfWeek { get; set; }
 

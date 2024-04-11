@@ -13,62 +13,63 @@
         <link href="https://fonts.googleapis.com/css2?family=Antic&display=swap" rel="stylesheet">
         
         <style>
-              .custom-navbar {
-                background-color: #f06525; /* Orange background */
-                border-radius: 10px; /* Rounded corners */
-                position: fixed;
-                top: 0;
-                margin-top: 5px;
-                margin-bottom: 10px;
-                width: 97.5%;
-                z-index: 1000; /* Ensure navbar stays on top of other content */
-                
-              }
-              .custom-navbar .navbar-brand,
-              .custom-navbar .nav-link,
-              .custom-navbar .navbar-toggler {
-                color: white; /* White text for all navbar elements */
-              }
-              .custom-navbar .nav-link.active {
-                color: white;
-                font-weight: bold; /* Bold text for active link */
-              }
-              .custom-navbar .navbar-toggler {
-                border-color: transparent; /* Remove default border color */
-              }
-              .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Custom SVG for white icon */
-              }
-              .custom-navbar .nav-link:hover {
-                    font-size: 1.1em; /* Slightly larger font on hover */
-                }
-                
-              /*FOOTER STYLES*/
-              .footer-container {
-                background-color: #5271FF; /* Blue background */
-                color: white; /* White text */
-                width: 100%;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                }
-                .footer-nav {
-                  justify-content: space-between; /* Space between logo and nav items */
-                }
-                .footer-nav .nav-item .nav-link {
-                  color: white; /* White text for links */
-                }
-                /* Logo styles */
-                .footer-logo {
-                  display: flex;
-                  align-items: center;
-                }
-            </style>
+          .custom-navbar {
+            background-color: #f06525; /* Orange background */
+            border-radius: 10px; /* Rounded corners */
+            position: fixed;
+            top: 0;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            width: 97.5%;
+            z-index: 1000; /* Ensure navbar stays on top of other content */
+            
+          }
+          .custom-navbar .navbar-brand,
+          .custom-navbar .nav-link,
+          .custom-navbar .navbar-toggler {
+            color: white; /* White text for all navbar elements */
+          }
+          .custom-navbar .nav-link.active {
+            color: white;
+            font-weight: bold; /* Bold text for active link */
+          }
+          .custom-navbar .navbar-toggler {
+            border-color: transparent; /* Remove default border color */
+          }
+          .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Custom SVG for white icon */
+          }
+          .custom-navbar .nav-link:hover {
+                font-size: 1.1em; /* Slightly larger font on hover */
+            }
+            
+          /*FOOTER STYLES*/
+          .footer-container {
+            background-color: #5271FF; /* Blue background */
+            color: white; /* White text */
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            }
+            .footer-nav {
+              justify-content: space-between; /* Space between logo and nav items */
+            }
+            .footer-nav .nav-item .nav-link {
+              color: white; /* White text for links */
+            }
+            /* Logo styles */
+            .footer-logo {
+              display: flex;
+              align-items: center;
+            }
+        </style>
 </head>
 <body>
 <div style="display: flex; flex-direction: column; min-height: 100vh;">
         
   <!-- NAVBAR -->
+
   <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -101,11 +102,14 @@
       </div>
     </div>
   </nav>
+
         
          
   <!-- BODY -->
   <main style="flex-grow: 1;">
-     <partial name="_CookieConsentPartial" /> 
+    <div class="cookies">
+      <partial name="_CookieConsentPartial" />
+    </div> 
     @RenderBody()
   </main>
         

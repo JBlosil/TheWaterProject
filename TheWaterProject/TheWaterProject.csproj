@@ -29,7 +29,4 @@
       <PackageReference Include="MPACKAGE.LibManager" Version="1.0.566" />
     </ItemGroup>
 
-    <ItemGroup>
-    </ItemGroup>
-
 </Project>

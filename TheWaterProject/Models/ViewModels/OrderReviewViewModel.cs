@@ -2,7 +2,9 @@ namespace TheWaterProject.Models.ViewModels;
 
     public class OrderReviewViewModel
     {
-        public IQueryable<Order> Orders { get; set; }
+        public IEnumerable<Order> Orders { get; set; }
         public PaginationInfo PaginationInfo { get; set; }
+        
+        public Customer Customers { get; set; }
     }
 

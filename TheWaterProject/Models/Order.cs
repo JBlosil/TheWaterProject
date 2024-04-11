@@ -10,6 +10,8 @@ public partial class Order
     public int TransactionId { get; set; }
 
     public int? CustomerId { get; set; }
+    
+    public virtual Customer Customer { get; set; }
 
     public string? Date { get; set; }
 

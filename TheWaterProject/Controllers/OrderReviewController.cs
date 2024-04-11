@@ -14,12 +14,21 @@ public class OrderReviewController : Controller
 
     public IActionResult OrderReview(int pageNum = 1)
     {
-        int pageSize = 20; // Number of items per page
-        var orders = _context.Orders
+        int pageSize = 50; // Number of items per page
+        var ordersQuery = _context.Orders
             .OrderByDescending(o => o.Date) // Assuming 'Date' is the date of the transaction
             .Skip((pageNum - 1) * pageSize)
             .Take(pageSize);
-
+            
+         var orders = ordersQuery  
+             .Select(o => new OrderReviewViewModel()
+                 {
+                     TransactionId = o.TransactionId
+                     Amount = o.
+                 } 
+             )
+            .ToList();
+        
         var viewModel = new OrderReviewViewModel
         {
             Orders = orders,

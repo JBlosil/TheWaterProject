@@ -55,18 +55,20 @@
                 </div>
             </form>
         </div>
-        
-        <form asp-action="OrderReview" method="get">
-            <div class="col-6 text-end">
+
+        <div class="col-6 text-end">
+            <form asp-action="OrderReview" method="get">
+            
                 <span class="pr-2 align-middle">From</span>
                 <i class="fa-solid fa-calendar-days"></i>
-                <input name="startDate" type="date" class="form-control d-inline-block w-auto" value="@DateTime.Today.AddMonths(-6).ToString("yyyy-MM-dd")"/>
+                <input name="startDate" type="date" class="rounded w-auto" value=""/>
                 <span class="px-2 align-middle">to</span>
                 <i class="fa-solid fa-calendar-days "></i>
-                <input name="endDate" type="date" class="form-control d-inline-block w-auto" value="@DateTime.Today.ToString("yyyy-MM-dd")"/>
+                <input name="endDate" type="date" class="rounded  w-auto" value=""/>
                 <button type="submit" class="btn btn-primary">Filter</button>
-            </div>
-        </form>
+                <a href="@Url.Action("OrderReview")" class="btn btn-secondary">Clear</a>
+            </form>
+        </div>
 
     </div>
     <table class="table">
@@ -89,8 +91,7 @@
             <td>@order.TransactionId</td>
             <td>@order.OrderStatus</td> <!-- status -->
             <td>@order.CustomerName</td>
-            <td>@order.Date</td>
-            <td>$@order.Amount</td>
+            <td>@(order.Date.HasValue ? order.Date.Value.ToString("MM/dd/yyyy") : "")</td>            <td>$@order.Amount</td>
             <td>@order.TransactionCountry</td>
             <td>@order.ShippingAddress</td>
             <td>@order.Fraud</td>
@@ -103,8 +104,9 @@
 
 <div class="container align-content-center">
     <div class="pagination-container">
-        <a href="@Url.Action("OrderReview", new { pageNum = Model.PaginationInfo.CurrentPage - 1 })" class="btn btn-default @(Model.PaginationInfo.CurrentPage == 1 ? "disabled" : "")">Previous</a>
+        <a href="@Url.Action("OrderReview", new { pageNum = Model.PaginationInfo.CurrentPage - 1, searchQuery = Model.SearchQuery, orderStatus = Model.OrderStatus, startDate = Model.StartDate, endDate = Model.EndDate })" class="btn btn-default @(Model.PaginationInfo.CurrentPage == 1 ? "disabled" : "")">Previous</a>
         <span>@(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage - (Model.PaginationInfo.ItemsPerPage - 1)) to @Math.Min(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage, Model.PaginationInfo.TotalItems) of @Model.PaginationInfo.TotalItems</span>
-        <a href="@Url.Action("OrderReview", new { pageNum = Model.PaginationInfo.CurrentPage + 1 })" class="btn btn-default @(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage >= Model.PaginationInfo.TotalItems ? "disabled" : "")">Next</a>
+        <a href="@Url.Action("OrderReview", new { pageNum = Model.PaginationInfo.CurrentPage + 1, searchQuery = Model.SearchQuery, orderStatus = Model.OrderStatus, startDate = Model.StartDate, endDate = Model.EndDate })" class="btn btn-default @(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage >= Model.PaginationInfo.TotalItems ? "disabled" : "")">Next</a>
+
     </div>
 </div>

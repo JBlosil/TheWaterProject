@@ -5,6 +5,10 @@ namespace TheWaterProject.Models.ViewModels;
         public IEnumerable<OrderDetailsViewModel> Orders { get; set; }
         public PaginationInfo PaginationInfo { get; set; }
         
+        public string? SearchQuery { get; set; }
+        public string? OrderStatus { get; set; }
+        public string? StartDate { get; set; }
+        public string? EndDate { get; set; }
         public class OrderDetailsViewModel
         {  
             public int TransactionId { get; set; }

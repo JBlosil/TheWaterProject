@@ -18,7 +18,8 @@ public class OrderReviewController : Controller
         var orders = _context.Orders
             .OrderByDescending(o => o.Date) // Assuming 'Date' is the date of the transaction
             .Skip((pageNum - 1) * pageSize)
-            .Take(pageSize);
+            .Take(pageSize)
+            .ToList();
 
         var viewModel = new OrderReviewViewModel
         {

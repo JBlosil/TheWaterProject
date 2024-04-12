@@ -329,29 +329,56 @@ public class HomeController : Controller
         return View();
     }
     
-    public IActionResult Products(int pageNum, string? productCategory)
+    public IActionResult Products(string? productCategory, string? productColor, int pageNum = 1)
     {
         int pageSize = 5;
-
-        var products = new ProductsListViewModel()
+        
+        IQueryable<Product> productQuery = _repo.Products;
+        
+        if (!string.IsNullOrEmpty(productCategory))
         {
-            Products = _repo.Products
-                .Where(x => x.Category==productCategory || productCategory == null)
-                .OrderBy(x => x.Name)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize),
+            productQuery = productQuery.Where(p => p.Category == productCategory);
+        }
+        if (!string.IsNullOrEmpty(productColor))
+        {
+            productQuery = productQuery.Where(p => p.Primary_Color == productColor);
+        }
+        
+        int totalFilteredItems = productQuery.Count();
+
+
+        var products = productQuery
+            .Select( p => new ProductsListViewModel.ProductDetailsViewModel()
+            {
+                product_ID = p.product_ID,
+                Name = p.Name,
+                Year = p.Year,
+                Num_Parts = p.Num_Parts,
+                Price = p.Price,
+                img_link = p.img_link,
+                Primary_Color = p.Primary_Color,
+                Secondary_Color = p.Secondary_Color,
+                Description = p.Description,
+                Category = p.Category,
+            })
+            .ToList();
+        
+        var viewModel = new ProductsListViewModel()
+        {
+            ProductsList = products,
 
             PaginationInfo = new PaginationInfo
             {
                 CurrentPage = pageNum,
                 ItemsPerPage = pageSize,
-                TotalItems = productCategory == null ? _repo.Products.Count() : _repo.Products.Where(x => x.Category == productCategory).Count(),
+                TotalItems = totalFilteredItems
             },
             
-            CurrentProductCategory = productCategory
+            ProductCategory = productCategory,
+            ProductColor = productColor
         };
         
-        return View(products);
+        return View(viewModel);
     }
     
     public async Task<IActionResult> ProductDetails(int productId)
@@ -391,4 +418,77 @@ public class HomeController : Controller
         return View();
     }
 
+    
+    public IActionResult Checkout(CheckoutViewModel model)
+    {
+            if (ModelState.IsValid)
+            {
+                // Find CustomerID based on First Name, Last Name, and Birthdate
+                var customer = _repo.Customers.FirstOrDefault(c => c.FirstName == model.FirstName && c.LastName == model.LastName && c.BirthDate == model.BirthDate);
+                // Check if the customer exists
+                if (customer == null)
+                {
+                    // Create a new customer since one wasn't found
+                    customer = new Customer
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        BirthDate = model.BirthDate,
+                        CountryOfResidence = model.ShippingAddress,
+                        Age = DateTime.Today.Year - model.BirthDate.Year,
+                        Email = model.Email,
+                        Gender = model.Gender
+                        
+                    };
+                    _repo.AddCustomer(customer);
+                    _repo.SaveChanges(); // Save the new customer to generate an ID
+                }
+        
+                var newOrder = new Order
+                {
+                    CustomerId = customer.CustomerId,
+                    Date = DateTime.Now,
+                    DayOfWeek = DateTime.Now.ToString("ddd"),
+                    Time = DateTime.Now.Hour,
+                    EntryMode = "CVC",
+                    Amount = 0,
+                    TypeOfTransaction = "Online",
+                    CountryOfTransaction = model.CountryOfTransaction,
+                    ShippingAddress = model.ShippingAddress,
+                    Bank = model.Bank,
+                    TypeOfCard = model.CardType,
+                    Fraud = 0,
+                    
+                };
+        
+                // Increment transaction ID logic or get max
+                int lastTransactionID = _repo.Orders.Max(o => o.TransactionId);
+                newOrder.TransactionId = lastTransactionID + 1;
+        
+                _repo.AddOrder(newOrder);
+                _repo.SaveChanges();
+        
+                if (newOrder.Fraud == 0)
+                {
+                    return View("NotFraud"); // Redirect to a confirmation page
+                }
+                else
+                {
+                    return View("Fraud"); // Redirect to a confirmation page
+                }
+            }
+        
+            // If model state is not valid, return to form with existing data
+            return View(model);
+    }
+    
+    public IActionResult Fraud()
+    {
+        return View();
+    }
+    public IActionResult NotFraud()
+    {
+        return View();
+    }
+    
 }

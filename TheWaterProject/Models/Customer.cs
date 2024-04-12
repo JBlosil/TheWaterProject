@@ -14,7 +14,7 @@ public partial class Customer
 
     public string? LastName { get; set; }
 
-    public DateOnly? BirthDate { get; set; }
+    public DateTime BirthDate { get; set; }
 
     public string? CountryOfResidence { get; set; }
 

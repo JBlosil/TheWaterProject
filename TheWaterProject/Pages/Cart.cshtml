@@ -1,5 +1,7 @@
 @page
+@using Microsoft.AspNetCore.Identity
 @model TheWaterProject.Pages.CartModel
+@inject SignInManager<IdentityUser> SignInManager
 @{
 }
 
@@ -43,5 +45,15 @@
 </table>
 
 <div class="text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <form asp-page-handler="Checkout" method="post">  <button type="submit" class="btn btn-success">Checkout</button>
+        </form>
+    }
+    else
+    {
+        <a class="btn btn-warning" asp-area="Identity" asp-page="/Account/Login">Login to Checkout</a>
+    }
+    
     <a class="btn btn-primary" href="@Model.ReturnUrl">Back to shopping!</a>
 </div>

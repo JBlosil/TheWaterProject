@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace TheWaterProject.Models;
 
@@ -13,7 +14,7 @@ public partial class Customer
 
     public string? LastName { get; set; }
 
-    public string? BirthDate { get; set; }
+    public DateOnly? BirthDate { get; set; }
 
     public string? CountryOfResidence { get; set; }
 

@@ -1,0 +1,121 @@
+@model TheWaterProject.Models.Product
+
+<h1>Create/Edit Product</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="product_ID"/>
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        @if (Model.Name != null)
+        {
+            <input asp-for="Name" class="form-control" value="@Model.Name"/>
+        }
+        else
+        {
+            <input asp-for="Name" class="form-control"/>
+        }
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Year">Year:</label>
+        @if (Model.Year != null)
+        {
+            <input asp-for="Year" class="form-control" value="@Model.Year"/>
+        }
+        else
+        {
+            <input asp-for="Year" class="form-control"/>
+        }
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Num_Parts">Number of Parts:</label>
+                @if (Model.Num_Parts != null)
+                {
+                    <input asp-for="Num_Parts" class="form-control" value="@Model.Num_Parts"/>
+                }
+                else
+                {
+                    <input asp-for="Num_Parts" class="form-control"/>
+                }
+        <span asp-validation-for="Num_Parts" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price:</label>
+                @if (Model.Price != null)
+                {
+                    <input asp-for="Price" class="form-control" value="@Model.Price"/>
+                }
+                else
+                {
+                    <input asp-for="Price" class="form-control"/>
+                }
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="img_link">Image Link:</label>
+                @if (Model.img_link != null)
+                {
+                    <input asp-for="img_link" class="form-control" value="@Model.img_link"/>
+                }
+                else
+                {
+                    <input asp-for="img_link" class="form-control"/>
+                }
+        <span asp-validation-for="img_link" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Primary_Color">Primary Color:</label>
+                @if (Model.Primary_Color != null)
+                {
+                    <input asp-for="Primary_Color" class="form-control" value="@Model.Primary_Color"/>
+                }
+                else
+                {
+                    <input asp-for="Primary_Color" class="form-control"/>
+                }
+        <span asp-validation-for="Primary_Color" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Secondary_Color">Secondary Color:</label>
+                @if (Model.Secondary_Color != null)
+                {
+                    <input asp-for="Secondary_Color" class="form-control" value="@Model.Secondary_Color"/>
+                }
+                else
+                {
+                    <input asp-for="Secondary_Color" class="form-control"/>
+                }
+        <span asp-validation-for="Secondary_Color" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description:</label>
+                @if (Model.Description != null)
+                {
+                    <textarea asp-for="Description" class="form-control" value="@Model.Description"></textarea>
+                }
+                else
+                {
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                }
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category">Category:</label>
+                        @if (Model.Category != null)
+                        {
+                            <input asp-for="Category" class="form-control" value="@Model.Category"/>
+                        }
+                        else
+                        {
+                            <input asp-for="Category" class="form-control"/>
+                        }
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create/Update Product</button>
+</form>
+
+@section Scripts {
+    <script src="@Url.Content("~/lib/jquery.validate/jquery.validate.min.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/jquery.validate.unobtrusive/jquery.validate.unobtrusive.min.js")" asp-append-version="true"></script>
+}

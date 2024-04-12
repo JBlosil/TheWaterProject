@@ -15,9 +15,8 @@ public interface IIntexRepository
     
     public IQueryable<ItemRecommendations> ItemRecommendations { get; }
 
-    // IQueryable<AspNetUser> AspNetUsers { get; }
-    
-    // // Does this need to be moved to IntexDbContext??
-    // public IntexDbContext(IntexDbContextOptions<IntexDbContext> options)
-    //     : base(options)
+    void DeleteProduct(int product_ID);
+    void UpdateProduct(Product product);
+    void AddProduct(Product product);
+    void SaveChanges();
 }

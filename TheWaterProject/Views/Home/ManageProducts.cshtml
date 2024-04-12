@@ -1,45 +1,72 @@
-@model IEnumerable<Product> 
-<!-- Not sure if this ^ is correct... -->
+@model IEnumerable<Product>
 
-<h2>Manage Products</h2>
-
-<table>
-    <thead>
-    <tr>
-        <th>Product ID</th>
-        <th>Name</th>
-        <th>Year</th>
-        <th>Num Parts</th>
-        <th>Price</th>
-        <th>Image</th>
-        <th>Color (Primary)</th>
-        <th>Color (Secondary)</th>
-        <th>Description</th>
-        <th>Category</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var p in Model)
-    {
-        <tr>
-            <td>@p.product_ID</td>
-            <td>@p.Name</td>
-            <td>@p.Year</td>
-            <td>@p.Num_Parts</td>
-            <td>@p.Price</td>
-            <td>@p.img_link</td>
-            <td>@p.Primary_Color</td>
-            <td>@p.Secondary_Color</td>
-            <td>@p.Description</td>
-            <td>@p.Category</td>
-            <td>
-                @Html.ActionLink("Edit", "EditProduct", new { id = p.product_ID }) |
-                @* @Html.ActionLink("Delete", "DeleteProduct", new { id = p.product_ID }) *@
-            </td>
-        </tr>
+<style>
+    .custom-btn-color {
+        background-color: #ef946e; /* Replace #yourColorCode with your desired color */
     }
-    </tbody>
-</table>
+</style>
 
-@Html.ActionLink("Add New Product", "CreateProduct")
+<h2 style="color:#F06525; font-weight: bold">Manage Products</h2>
+
+<div class="container my-4"> <div class="row mb-3"> <div class="col-6">
+            <form asp-action="ManageProducts" method="get" class="d-flex">
+                <input type="search" name="productID" class="form-control me-2" placeholder="Search by product ID" />
+                <button class="btn custom-btn-color btn-secondary" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="col-md-4 text-end">
+            <form asp-action="ManageProducts" method="get" class="d-flex">
+                <input type="number" class="form-control me-2" name="numParts" placeholder="Filter by Num Parts" />
+                <button class="btn custom-btn-color btn-secondary" type="submit">Filter</button>
+                <a href="@Url.Action("ManageProducts")" class="btn btn-secondary">Clear</a>
+            </form>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Num Parts</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Color (Primary)</th>
+            <th>Color (Secondary)</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.product_ID</td>
+                <td>@p.Name</td>
+                <td>@p.Year</td>
+                <td>@p.Num_Parts</td>
+                <td>@p.Price</td>
+                <td>@(p.img_link.Substring(0,20) + "...")</td>
+                <td>@p.Primary_Color</td>
+                <td>@p.Secondary_Color</td>
+                <td>
+                    <span class="product-description">@(p.Description.Length > 50 ? p.Description.Substring(0, 50) + "..." : p.Description)</span>
+                    @if (p.Description.Length > 50)
+                    {
+                        <a class="read-more">Read More</a>
+                    }
+                </td>
+                <td>@p.Category</td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@p.product_ID">Edit</a>
+
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteProduct" asp-route-id="@p.product_ID">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+

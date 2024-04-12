@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ public class HomeController : Controller
         var currentUser = await _userManager.GetUserAsync(User);
 
         // Check if user is logged in
-        if (currentUser == null)
+        if (currentUser == null || await _userManager.IsInRoleAsync(currentUser, "Admin"))
         {
             var blah = new ProductsListViewModel()
             {
@@ -72,11 +73,12 @@ public class HomeController : Controller
         return View();
     }
     
-        // public IActionResult ManageUsers()
-    // {
-    //     var users = _repo.AspNetUser.ToList();
-    //     return View(users);
-    // }
+    [Authorize (Roles = "Admin")]
+    public IActionResult ManageUsers()
+    {
+        
+        return View();
+    }
 
 
     // [HttpPost]
@@ -145,84 +147,88 @@ public class HomeController : Controller
 //
 
  // GET: Admin/Products
-    public IActionResult ManageProducts()
-    {
-        var products = _repo.Products.ToList();
-        return View("ManageProducts", products);
-    }
+ [Authorize(Roles = "Admin")]
+ public IActionResult ManageProducts(int? productID = null, int? numParts = null)
+ {
+     IQueryable<Product> products = _repo.Products; // Start with all products
+
+     // Apply filters based on provided parameters
+     if (productID.HasValue)
+     {
+         products = products.Where(p => p.product_ID == productID);
+     }
+
+     if (numParts.HasValue)
+     {
+         products = products.Where(p => p.Num_Parts == numParts);
+     }
+
+     return View("ManageProducts", products.ToList());
+ }
 
     // GET: Admin/Products/Create
-    public IActionResult CreateProducts()
+    [Authorize (Roles = "Admin")]
+    public IActionResult CreateProduct()
     {
-        return View("CreateProduct");
+        return View(new Models.Product());
     }
 
     // POST: Admin/Products/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize (Roles = "Admin")]
     public IActionResult CreateProduct(Product product)
     {
         if (ModelState.IsValid)
         {
-            // _repo.Products.Add(product);
-            // _repo.SaveChanges();
+            _repo.AddProduct(product);
+            _repo.SaveChanges();
             return RedirectToAction("ManageProducts");
         }
         return View("CreateProduct", product);
     }
+    
+    [HttpGet]
+    [Authorize (Roles = "Admin")]
+    public IActionResult Edit(int id)
+    {
+        var recordEdit = _repo.Products
+            .Single(x => x.product_ID == id);
 
-    // // GET: Admin/Products/Edit/5
-    // public IActionResult EditProduct(int id)
-    // {
-    //     var product = _repo.Products.Find(id);
-    //     if (product == null)
-    //     {
-    //         return NotFound();
-    //     }
-    //     return View("ManageProducts", product);
-    // }
+
+        return View("CreateProduct", recordEdit);
+    }
 
     // POST: Admin/Products/Edit/5
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult EditProduct(int id, Product product)
+    [Authorize (Roles = "Admin")]
+    public IActionResult Edit(Models.Product updatedInfo)
     {
-        if (id != product.product_ID)
-        {
-            return NotFound();
-        }
+        _repo.UpdateProduct(updatedInfo);
+        _repo.SaveChanges();
 
-        if (ModelState.IsValid)
-        {
-            // _repo.Update(product);
-            // _repo.SaveChanges();
-            return RedirectToAction("ManageProducts");
-        }
-        return View("ManageProducts");
+        return RedirectToAction("ManageProducts");
     }
 
-    // // GET: Admin/Products/Delete/5
-    // public IActionResult DeleteProduct(int id)
-    // {
-    //     var product = _repo.Products.Find(id);
-    //     if (product == null)
-    //     {
-    //         return NotFound();
-    //     }
-    //     return View("Products/Delete", product);
-    // }
+    [HttpGet]
+    public IActionResult DeleteProduct(int id)
+    {
+        var recordDelete = _repo.Products
+            .Single(x => x.product_ID == id);
 
-    // // POST: Admin/Products/Delete/5
-    // [HttpPost, ActionName("DeleteProduct")]
-    // [ValidateAntiForgeryToken]
-    // public IActionResult DeleteConfirmed(int id)
-    // {
-    //     var product = _repo.Products.Find(id);
-    //     _repo.Products.Remove(product);
-    //     _repo.SaveChanges();
-    //     return RedirectToAction("ManageProducts");
-    // }
+        return View(recordDelete);
+    }
     
+    [HttpPost]
+    public IActionResult DeleteProduct(Models.Product producttodelete)
+    {
+        _repo.DeleteProduct(producttodelete.product_ID);
+        _repo.SaveChanges();
+
+        return RedirectToAction("ManageProducts");
+    }
+    
+    [Authorize (Roles = "Customer")]
     public IActionResult OrderConfirmation(string orderNumber)
     {
 
@@ -241,6 +247,7 @@ public class HomeController : Controller
         return View();
     }
     
+    [Authorize (Roles = "Admin")]
     public IActionResult OrderReview(int pageNum = 1, string? searchQuery = null, string? orderStatus = null, DateTime? startDate = null, DateTime? endDate = null)
     {
         int pageSize = 50; // Number of items per page
@@ -363,6 +370,7 @@ public class HomeController : Controller
         return View(details);
     }
 
+    [Authorize (Roles = "Customer")]
     public IActionResult Checkout()
     {
         return View();

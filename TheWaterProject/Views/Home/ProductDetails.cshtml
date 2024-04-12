@@ -111,7 +111,7 @@
                         <form id=@Model.Product.product_ID method="post" asp-page="/Cart">
                             <input type="hidden" asp-for="@Model.Product.product_ID"/>
                             <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
-                            <button class="btn btn-primary rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button> 
+                            <button type="submit" class="btn btn-primary rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button> 
                         </form>
                     </div>
                 </div>

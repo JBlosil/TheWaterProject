@@ -18,4 +18,28 @@ public class EFIntexRepository : IIntexRepository
     public IQueryable<LineItem> LineItems => _context.LineItems;
     public IQueryable<UserTopProducts> UserTopProducts => _context.UserTopProducts;
     public IQueryable<ItemRecommendations> ItemRecommendations => _context.ItemRecommendations;
+    
+    public void AddProduct(Product product)
+    {
+        _context.Products.Add(product);
+    }
+    
+    public void DeleteProduct(int product_ID)
+    {
+        var productToDelete = _context.Products.FirstOrDefault(p => p.product_ID == product_ID);
+        if (productToDelete != null)
+        {
+            _context.Products.Remove(productToDelete);
+        }
+    }
+
+    public void SaveChanges()
+    {
+        _context.SaveChanges();
+    }
+
+    public void UpdateProduct(Product product)
+    {
+        _context.Products.Update(product);
+    }
 }

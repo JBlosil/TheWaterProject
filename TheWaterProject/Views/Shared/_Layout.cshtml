@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
      <meta charset="utf-8"/>
@@ -72,7 +77,6 @@
 
   <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container-fluid">
-
       <a class="navbar-brand" href="#">
         <img src="~/Assets/LOGO.png" alt="Brickwell Logo" width="40" height="40" style="border-radius:50%; width:40px; height:40px; object-fit:cover;">
       </a>
@@ -91,15 +95,35 @@
           <li class="nav-item">
             <a class="nav-link" asp-route="products" asp-route-pageNum="1">SHOP</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: #201d1d" asp-controller="Home" asp-action="ManageUsers">USERS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: #201d1d" asp-controller="Home" asp-action="ManageProducts">MANAGE PRODUCTS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: #201d1d" asp-controller="Home" asp-action="OrderReview">ORDERS</a>
-          </li>
+          @if (User.IsInRole("Admin"))
+          {
+            <li class="nav-item">
+              <a class="nav-link"  asp-controller="Home" asp-action="ManageUsers">USERS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  asp-controller="Home" asp-action="ManageProducts">MANAGE PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  asp-controller="Home" asp-action="OrderReview">ORDERS</a>
+            </li>
+          }
+        </ul>
+        <ul class="navbar-nav ms-auto">
+            @if (User.Identity.IsAuthenticated)
+            {
+              <li class="nav-item">
+                <a class="nav-link"  asp-area="Identity" asp-page="/Account/Manage/Index">Account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+                </li>
+            }
+            else
+            {
+              <li class="nav-item">
+                <a class="nav-link"  asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </li>
+            }
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -148,6 +172,7 @@
           <li class="nav-item">
             <a class="nav-link" asp-controller="Home" asp-action="Privacy">PRIVACY</a>
           </li>
+        
         </ul>
       </div>
     </div>

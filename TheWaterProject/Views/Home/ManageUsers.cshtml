@@ -1,30 +1,81 @@
-@* @model IEnumerable<AspNetUser> *@
-@* *@
-@* <h2>Manage Users</h2> *@
-@* *@
-@* <table> *@
-@*     <tr> *@
-@*         <th>User ID</th> *@
-@*         <th>Username</th> *@
-@*         <th>Email</th> *@
-@*         <th>Phone Number</th> *@
-@*         <th>Role</th> *@
-@*     </tr> *@
-@* *@
-@*     @foreach (var user in Model) *@
-@*     { *@
-@*         <tr> *@
-@*             <td>@user.Id</td> *@
-@*             <td>@user.UserName</td> *@
-@*             <td>@user.Email</td> *@
-@*             <td>@user.PhoneNumber</td> *@
-@*             <td>@user.Role</td> *@
-@*             <td> *@
-@*                 @Html.ActionLink("Edit", "Edit", new { id = user.Id }) | *@
-@*                 @Html.ActionLink("Delete", "Delete", new { id = user.Id }, new { onclick = "return confirm('Are you sure you want to delete this?');" }) *@
-@*             </td> *@
-@*         </tr> *@
-@*     } *@
-@* </table> *@
-@* *@
-@* @Html.ActionLink("Add New Customer", "Create") *@ 
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@inject UserManager<IdentityUser> UserManager  
+
+
+<style>
+    .custom-btn-color {
+        background-color: #ef946e; /* Replace #yourColorCode with your desired color */
+    }
+</style>
+
+<h2 style="color:#F06525; font-weight: bold">Manage Users</h2>
+
+<div class="container my-4"> <!-- Spacing above and below this container -->
+<div class="row mb-3">
+    <div class="col-6">
+        <form asp-action="ManageUsers" method="get">
+            <div class="dropdown d-inline-block ml-2">
+                <i class="fa-solid fa-filter"></i>                    
+                <button class="btn custom-btn-color btn-secondary dropdown-toggle rounded-pill" type="button" id="roleDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    All
+                </button>
+                <div class="dropdown-menu" aria-labelledby="statusDropdown">
+                    <button class="dropdown-item" type="submit" name="orderStatus" value="">All</button>
+                    <button class="dropdown-item" type="submit" name="admin" value="Admin">Admin</button>
+                    <button class="dropdown-item" type="submit" name="customer" value="Customer">Customer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+
+<div class="container my-4"> <div class="row mb-3"> <div class="col-6">
+            <form asp-action="ManageProducts" method="get" class="d-flex">
+                <input type="search" name="email" class="form-control me-2" placeholder="Search by Email" />
+                <button class="btn custom-btn-color btn-secondary" type="submit">Search</button>
+                <a href="@Url.Action("ManageUsers")" class="btn btn-secondary">Clear</a>
+            </form>
+        </div> 
+    </div>
+</div>
+
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Role</th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.PhoneNumber</td>
+
+            <td>
+                @if (await UserManager.IsInRoleAsync(user, "*"))  {
+                    @("All Roles")  }
+                else
+                {
+                    var roles = await UserManager.GetRolesAsync(user);
+                    @if (roles.Any())  {
+                        @roles.FirstOrDefault()  }
+                    else
+                    {
+                        @("No Role")  }
+                }
+            </td>
+
+            <td>
+                <a class="btn btn-info" asp-controller="Home" asp-action="EditUser" asp-route-id="@user.Id">Edit</a>
+            </td>
+        </tr>
+    }
+</table>
+</div>

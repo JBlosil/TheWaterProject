@@ -1,0 +1,11 @@
+@model Product
+
+<h2>Confirm Deletion</h2>
+<h3>@Model.Name</h3>
+<form method="Post">
+
+    <input type="hidden" asp-for="product_ID" />
+
+    <button type="submit">Delete</button>
+    <a class="btn btn-info" asp-controller="Home" asp-action="ManageProducts">Cancel</a>
+</form>

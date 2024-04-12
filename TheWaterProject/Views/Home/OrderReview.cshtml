@@ -9,19 +9,26 @@
     .main-content {
         margin-top: 100px; /* Adjust this value to the height of your header */
     }
+    .custom-btn-color {
+        background-color: #ef946e; /* Replace #yourColorCode with your desired color */
+    }
+    thead {
+        background-color: #ef946e; /* Adjust the color as needed */
+        border-radius: 20px 20px 0 0; /* Rounded corners at the top */
+    }
 </style>
 
 <div class="container my-4"> <!-- Spacing above and below this container -->
     <div class="row mb-3"> <!-- Spacing below the row -->
         <div class="col-6">
-            <h2 class="mb-0" style="color:#51B59F">Orders</h2> <!-- No bottom margin for the title -->
+            <h2 class="mb-0" style="color:#F06525; font-weight: bold">Orders</h2> <!-- No bottom margin for the title -->
         </div>
         <form asp-action="OrderReview" method="get" class="col-6 text-end">
             <input type="search"  name="searchQuery" class="form-control d-inline-block w-auto" placeholder="Search orders by ID" />
-            <button class="btn btn-primary ml-2" >Search</button>
+            <button class="btn btn-secondary ml-2 custom-btn-color" style="color: white" >Search</button>
         </form>
     </div>  
-
+ 
     <div class="row mb-3">
         <div class="col-6">
             @* <form asp-action="PerformMassAction" asp-controller="OrderReview" method="post"> *@
@@ -41,8 +48,8 @@
             @* </form> *@
             <form asp-action="OrderReview" method="get">
                 <div class="dropdown d-inline-block ml-2">
-                    <i class="fa-regular fa-filter"></i>
-                    <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa-solid fa-filter"></i>                    
+                    <button class="btn custom-btn-color btn-secondary dropdown-toggle rounded-pill" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         All
                     </button>
                     <div class="dropdown-menu" aria-labelledby="statusDropdown">
@@ -61,12 +68,10 @@
         <div class="col-6 text-end">
             <form asp-action="OrderReview" method="get">
                 <span class="pr-2 align-middle">From</span>
-                <i class="fa-solid fa-calendar-days"></i>
-                <input name="startDate" type="date" class="rounded w-auto" value=""/>
+                <input name="startDate" type="date" class="form-control d-inline-block w-auto rounded" value=""/>
                 <span class="px-2 align-middle">to</span>
-                <i class="fa-solid fa-calendar-days "></i>
-                <input name="endDate" type="date" class="rounded  w-auto" value=""/>
-                <button type="submit" class="btn btn-primary">Filter</button>
+                <input name="endDate" type="date" class="form-control d-inline-block rounded w-auto" value=""/>
+                <button type="submit" class="btn custom-btn-color btn-secondary">Filter</button>
                 <a href="@Url.Action("OrderReview")" class="btn btn-secondary">Clear</a>
             </form>
         </div>
@@ -75,7 +80,6 @@
     <table class="table">
         <thead>
         <tr>
-            <th><input type="checkbox" id="selectAll" /></th>
             <th>Transaction ID</th>
             <th>Status</th>
             <th>Customer Name</th>
@@ -90,7 +94,6 @@
         @foreach (var order in Model.Orders)
         {
             <tr>
-                <td><input type="checkbox" class="order-checkbox" value="@order.TransactionId" name="selectedOrders" /></td>
                 <td>@order.TransactionId</td>
                 <td>@order.OrderStatus</td> <!-- status -->
                 <td>@order.CustomerName</td>

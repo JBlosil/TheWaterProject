@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MPACKAGE.LibDomain.Extensions;
 using TheWaterProject.Models;
 using TheWaterProject.Models.ViewModels;
 
@@ -8,20 +10,66 @@ namespace TheWaterProject.Controllers;
 public class HomeController : Controller
 {
     private IIntexRepository _repo;
-
-    public HomeController(IIntexRepository temp)
+    
+    private readonly UserManager<IdentityUser> _userManager;
+    public HomeController(IIntexRepository temp, UserManager<IdentityUser> userManager)
     {
         _repo = temp;
+        _userManager = userManager;
     }
-    public IActionResult Index(int? customer_ID)
+    public async Task<IActionResult> Index() // Changed to async
     {
         int pageSize = 5;
 
+        // Get currently logged-in user (assuming you have user login implemented)
+        var currentUser = await _userManager.GetUserAsync(User);
+
+        // Check if user is logged in
+        if (currentUser == null)
+        {
+            var blah = new ProductsListViewModel()
+            {
+                TopProducts = _repo.TopProducts
+            };
+
+            return View(blah);
+        }
+
+        // User is logged in, retrieve email
+        var userEmail = currentUser.Email;
+
+        // Find customer by email
+        var customer = await _repo.Customers.FirstOrDefaultAsync(c => c.Email == userEmail);
+
+        int customerID = customer.CustomerId;
+
+        var order = await _repo.Orders.FirstOrDefaultAsync(o => o.CustomerId == customerID);
+
+        int orderTransactionIdID = order.TransactionId;
+
+        var lineitem = await _repo.LineItems.FirstOrDefaultAsync(li => li.TransactionId == orderTransactionIdID);
+
+        int productID = lineitem.ProductId;
+
+        var topUserProducts = await _repo.UserTopProducts.FirstOrDefaultAsync(utp => utp.product_ID == productID);
+
+        List<int> recommendedProductIDs = new List<int>() { topUserProducts.Rec1, topUserProducts.Rec2, topUserProducts.Rec3, topUserProducts.Rec4, topUserProducts.Rec5 };
+
+        var recommendedProducts = await _repo.Products.Where(p => recommendedProductIDs.Contains(p.product_ID)).ToListAsync();
+
+        // Efficiently retrieve products based on recommended IDs
+        
         var blah2 = new ProductsListViewModel()
         {
-            TopProducts = _repo.TopProducts,
+            UserEmail = userEmail,
+            RecommendedProducts = recommendedProducts,
         };
         return View(blah2);
+    }
+
+    public IActionResult About()
+    {
+        return View();
     }
     
         // public IActionResult ManageUsers()
@@ -192,13 +240,6 @@ public class HomeController : Controller
 // Send the model to the view
         return View();
     }
-
-
-    // private bool CheckForFraud(string orderNumber)
-    // {
-    //     // Fill in logic here
-    //     
-    // };
     
     public IActionResult OrderReview(int pageNum = 1, string? searchQuery = null, string? orderStatus = null, DateTime? startDate = null, DateTime? endDate = null)
     {
@@ -260,64 +301,6 @@ public class HomeController : Controller
 
         return View(viewModel);
     }
-    // [HttpPost]
-    // public async Task<IActionResult> PerformMassAction(string action, int[] selectedTransactions)
-    // {
-    //     // First, ensure we have orders to work with
-    //     if (selectedTransactions == null || !selectedTransactions.Any())
-    //     {
-    //         // Optionally, add a message to TempData or ViewBag to inform no orders were selected
-    //         return RedirectToAction("OrderReview");
-    //     }
-    //
-    //     // Retrieve the orders from the database
-    //     var ordersToUpdate = await _reop.Orders
-    //         .Where(o => selectedTransactions.Contains(o.TransactionId)) // Assuming TransactionId is your identifier
-    //         .ToListAsync();
-    //
-    //     switch (action)
-    //     {
-    //         case "processing":
-    //             foreach (var order in ordersToUpdate)
-    //             {
-    //                 order.OrderStatus = "Processing"; // Assuming OrderStatus is a string
-    //             }
-    //             break;
-    //         case "onHold":
-    //             foreach (var order in ordersToUpdate)
-    //             {
-    //                 order.OrderStatus = "On Hold for Fraud"; // Adjust the status as per your application's requirements
-    //             }
-    //             break;
-    //         case "shipped":
-    //             foreach (var order in ordersToUpdate)
-    //             {
-    //                 order.OrderStatus = "Shipped";
-    //             }
-    //             break;
-    //         case "canceled":
-    //             foreach (var order in ordersToUpdate)
-    //             {
-    //                 order.OrderStatus = "Canceled";
-    //             }
-    //             break;
-    //         case "completed":
-    //             foreach (var order in ordersToUpdate)
-    //             {
-    //                 order.OrderStatus = "Completed";
-    //             }
-    //             break;
-    //     }
-    //
-    //     // Save changes if any updates were made
-    //     if (ordersToUpdate.Any())
-    //     {
-    //         await _reop.SaveChangesAsync();
-    //     }
-    //
-    //     // Redirect back to the OrderReview page
-    //     return RedirectToAction("OrderReview");
-    // }
     
     public IActionResult Privacy()
     {
@@ -349,13 +332,27 @@ public class HomeController : Controller
         return View(products);
     }
     
-    public IActionResult ProductDetails(int productId)
+    public async Task<IActionResult> ProductDetails(int productId)
     {
         var product = _repo.Products.FirstOrDefault(p => p.product_ID == productId);
-
-        var details = new ProductDetailsViewModel
+        
+        if (product == null)
         {
-            Product = product
+            // Product not found, redirect to error or display an error message
+            return NotFound(); // Use built-in NotFound() for HTTP 404 status code
+            // Alternatively:
+            // return View("ProductNotFound"); // Redirect to a specific error view
+        }
+        var itemRecommendations = await _repo.ItemRecommendations.FirstOrDefaultAsync(ir => ir.product_ID == productId);
+
+        List<int> recommendedProductIDs = new List<int>() { itemRecommendations.Rec1, itemRecommendations.Rec2, itemRecommendations.Rec3, itemRecommendations.Rec4, itemRecommendations.Rec5 };
+
+        var recommendedProducts = await _repo.Products.Where(p => recommendedProductIDs.Contains(p.product_ID)).ToListAsync();
+
+        var details = new ProductDetailsViewModel()
+        {
+            Product = product,
+            ItemRecommendedProducts = recommendedProducts
         };
 
         // if (product == null)
@@ -364,6 +361,11 @@ public class HomeController : Controller
         // }
 
         return View(details);
+    }
+
+    public IActionResult Checkout()
+    {
+        return View();
     }
 
 }

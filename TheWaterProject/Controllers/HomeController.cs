@@ -76,33 +76,48 @@ public class HomeController : Controller
     [Authorize (Roles = "Admin")]
     public IActionResult ManageUsers()
     {
+        IQueryable<IdentityUser> Users = _userManager.Users;
         
-        return View();
+        return View(Users.ToList());
+    }
+
+    [Authorize(Roles = "Admin")]
+    public IActionResult EditUserPage()
+    {
+        return View(new IdentityUser());
+    }
+    
+    [HttpGet]
+    [Authorize (Roles = "Admin")]
+    public async Task<IActionResult> EditUser(int id)
+    {
+        var user = await _userManager.FindByIdAsync(id.ToString());
+        if (user == null)
+        {
+            return NotFound();
+        }
+        
+        return View("EditUserPage", user);
     }
 
 
-    // [HttpPost]
-    // public IActionResult CreateUser(UserViewModel viewModel)
-    // {
-            // var viewModel = new UserViewModel
-    //     if (ModelState.IsValid)
-    //     {
-             // // Save viewModel.Customer to the database
-             // // You might need to handle the role assignment separately, depending on your database design
-                // _repo.Customers.Add(viewModel.AspNetUser);
-                // _repo.SaveChanges();
-                // return RedirectToAction(nameof(Index));
-    //     }
-    
-            // // Reload the roles in case of an error
-            // viewModel.Roles = _repo.Roles.Select(r => new SelectListItem 
-            // { 
-            //     ID = r.RoleId.ToString(),
-            //     Name = r.RoleName
-            // }).ToList();
-            
-    //     return View(viewModel);
-    // }
+    [HttpPost]
+    public async Task<IActionResult> EditUser(IdentityUser user)
+    {
+        if (ModelState.IsValid)
+        {
+            // Assign the selected role (if applicable)
+            if (!string.IsNullOrEmpty(user.SecurityStamp))
+            {
+                await _userManager.AddToRoleAsync(user, user.SecurityStamp);
+            }
+
+            return RedirectToAction("ManageUsers");
+        }
+
+        return View("ManageUsers");
+    }
+
 
     // public IActionResult Edit(int id)
     // {

@@ -116,38 +116,3 @@
 
     </div>
 </div>
-
-@* <script> *@
-@* document.getElementById('selectAll').addEventListener('click', function(event) { *@
-@*     var checkboxes = document.getElementsByClassName('order-checkbox'); *@
-@*     for (var i = 0; i < checkboxes.length; i++) { *@
-@*         checkboxes[i].checked = this.checked; *@
-@*     } *@
-@* }); *@
-@* document.getElementById('massActionForm').addEventListener('submit', function(event) { *@
-@*     // Prevent the normal form submission *@
-@*     event.preventDefault(); *@
-@* *@
-@*     // Collect selected transaction IDs *@
-@*     var selectedTransactionIds = []; *@
-@*     var checkboxes = document.getElementsByClassName('order-checkbox'); *@
-@*     for (var i = 0; i < checkboxes.length; i++) { *@
-@*         if (checkboxes[i].checked) { *@
-@*             selectedTransactionIds.push(checkboxes[i].value); *@
-@*         } *@
-@*     } *@
-@* *@
-@*     // Add the transaction IDs to the form as hidden inputs *@
-@*     selectedTransactionIds.forEach(id => { *@
-@*         var input = document.createElement('input'); *@
-@*         input.type = 'hidden'; *@
-@*         input.name = 'selectedTransactions'; // Updated name to reflect the domain language *@
-@*         input.value = id; *@
-@*         this.appendChild(input); *@
-@*     }); *@
-@* *@
-@*     // Submit the form *@
-@*     this.submit(); *@
-@* }); *@
-@* *@
-@* </script> *@

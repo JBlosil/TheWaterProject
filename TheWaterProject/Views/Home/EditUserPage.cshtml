@@ -1,0 +1,24 @@
+@using Microsoft.AspNetCore.Identity
+@model Microsoft.AspNetCore.Identity.IdentityUser
+@inject UserManager<IdentityUser> UserManager
+
+<form asp-action="EditUser" method="post">
+    <input type="hidden" asp-for="Id"/>
+     <div>
+        <label asp-for="UserName">Username</label>
+        <input asp-for="UserName" />
+    </div>
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" />
+    </div>
+    <div>
+        <select asp-for="SecurityStamp" class="form-select">
+            <option value="">Select Role</option>
+            <option value="Admin">Admin</option>
+            <option value="Customer">Customer</option>
+        </select>
+    </div>
+    
+    <button type="submit">Update</button>
+</form> 

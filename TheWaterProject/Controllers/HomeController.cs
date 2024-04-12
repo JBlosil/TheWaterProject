@@ -335,6 +335,14 @@ public class HomeController : Controller
     public async Task<IActionResult> ProductDetails(int productId)
     {
         var product = _repo.Products.FirstOrDefault(p => p.product_ID == productId);
+        
+        if (product == null)
+        {
+            // Product not found, redirect to error or display an error message
+            return NotFound(); // Use built-in NotFound() for HTTP 404 status code
+            // Alternatively:
+            // return View("ProductNotFound"); // Redirect to a specific error view
+        }
         var itemRecommendations = await _repo.ItemRecommendations.FirstOrDefaultAsync(ir => ir.product_ID == productId);
 
         List<int> recommendedProductIDs = new List<int>() { itemRecommendations.Rec1, itemRecommendations.Rec2, itemRecommendations.Rec3, itemRecommendations.Rec4, itemRecommendations.Rec5 };

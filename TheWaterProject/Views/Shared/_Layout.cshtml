@@ -12,7 +12,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Antic&display=swap" rel="stylesheet">
         
-        <style>
+        <style> 
           .custom-navbar {
             background-color: #f06525; /* Orange background */
             border-radius: 10px; /* Rounded corners */
@@ -81,22 +81,22 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+            <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ABOUT</a>
+            <a class="nav-link" asp-controller="Home" asp-action="Index">ABOUT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">SHOP</a>
+            <a class="nav-link"  asp-action="Products">SHOP</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">USERS</a>
+            <a class="nav-link" style="color: #201d1d" asp-controller="Home" asp-action="ManageUsers">USERS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">PRODUCTS</a>
+            <a class="nav-link" style="color: #201d1d" asp-controller="Home" asp-action="ManageProducts">MANAGE PRODUCTS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ORDERS</a>
+            <a class="nav-link" style="color: #201d1d" asp-controller="Home" asp-action="OrderReview">ORDERS</a>
           </li>
         </ul>
       </div>

@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Recovery code verification";
 }
+<style>
+    .custom-btn-color{
+        background-color: #f06525;
+    }
 
+</style>
 <h1>@ViewData["Title"]</h1>
 <hr />
 <p>
@@ -19,7 +24,7 @@
                 <label asp-for="Input.RecoveryCode" class="form-label"></label>
                 <span asp-validation-for="Input.RecoveryCode" class="text-danger"></span>
             </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+            <button type="submit" class="w-100 btn btn-lg btn-primary custom-btn-color">Log in</button>
         </form>
     </div>
 </div>

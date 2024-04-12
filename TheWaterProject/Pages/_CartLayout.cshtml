@@ -3,20 +3,184 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Cart</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/TheWaterProject.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" asp-append-version="true"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antic&display=swap" rel="stylesheet">
+
+    <style>
+        .custom-navbar {
+            background-color: #f06525; /* Orange background */
+            border-radius: 10px; /* Rounded corners */
+            position: fixed;
+            top: 0;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            width: 97.5%;
+            z-index: 1000; /* Ensure navbar stays on top of other content */
+
+        }
+        .custom-navbar .navbar-brand,
+        .custom-navbar .nav-link,
+        .custom-navbar .navbar-toggler {
+            color: white; /* White text for all navbar elements */
+        }
+        .custom-navbar .nav-link.active {
+            color: white;
+            font-weight: bold; /* Bold text for active link */
+        }
+        .custom-navbar .navbar-toggler {
+            border-color: transparent; /* Remove default border color */
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Custom SVG for white icon */
+        }
+        .custom-navbar .nav-link:hover {
+            font-size: 1.1em; /* Slightly larger font on hover */
+        }
+
+        /*FOOTER STYLES*/
+        .footer-container {
+            background-color: #5271FF; /* Blue background */
+            color: white; /* White text */
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+        .footer-nav {
+            justify-content: space-between; /* Space between logo and nav items */
+        }
+        .footer-nav .nav-item .nav-link {
+            color: white; /* White text for links */
+        }
+        /* Logo styles */
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-<div class="bg-dark text-white p-2">
-    <span class="navbar-brand m-lg-2">BRICKWELL</span>
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="~/Assets/LOGO.png" alt="Brickwell Logo" width="40" height="40" style="border-radius:50%; width:40px; height:40px; object-fit:cover;">
+            </a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BRICKWELL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse col-8" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="About">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-route="products" asp-route-pageNum="1">SHOP</a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                    <li class="nav-item">
+                        <a class="nav-link"  asp-controller="Home" asp-action="ManageUsers">USERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  asp-controller="Home" asp-action="ManageProducts">MANAGE PRODUCTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  asp-controller="Home" asp-action="OrderReview">ORDERS</a>
+                    </li>
+                    }
+                </ul>
+                <ul class="navbar-nav ms-auto">
+
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <vc:cart-summary/>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+                    </li>
+                    }
+                    else
+                    {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- BODY -->
+    <main style="flex-grow: 1;">
+        <div class="cookies">
+            <partial name="_CookieConsentPartial" />
+        </div>
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <div class="footer-container">
+        <div class="row">
+            <div class="col-md-4 footer-logo">
+                <!-- Add your logo image inside the div -->
+                <img src="~/Assets/LOGO.png" alt="Brickwell Logo" width="30" height="30" style="border-radius:50%; width:30px; height:30px; object-fit:cover;">
+            </div>
+            <div class="col-md-4 text-center" style="font-weight: lighter">
+                <!-- Copyright Text -->
+                &copy; 2024 - Brickwell
+            </div>
+            <div class="col-md-4">
+                <ul class="nav justify-content-end footer-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Privacy">PRIVACY</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="m-1 p-1">
-    @RenderBody()
-</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
-
-
 </html>
+

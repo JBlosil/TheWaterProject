@@ -17,13 +17,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Antic&display=swap" rel="stylesheet">
         
-        <style> 
+        <style>
+          
+          .btn.btn-primary{
+            background-color: #f06525;
+          }
           .custom-navbar {
             background-color: #f06525; /* Orange background */
             border-radius: 10px; /* Rounded corners */
             position: fixed;
             top: 0;
-            margin-top: 5px;
+            /*margin-top: 5px;*/
             margin-bottom: 10px;
             width: 97.5%;
             z-index: 1000; /* Ensure navbar stays on top of other content */
@@ -109,26 +113,28 @@
           }
         </ul>
         <ul class="navbar-nav ms-auto">
-            @if (User.Identity.IsAuthenticated)
-            {
-              <li class="nav-item">
-                <a class="nav-link"  asp-area="Identity" asp-page="/Account/Manage/Index">Account</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"  asp-area="Identity" asp-page="/Account/Logout">Logout</a>
-                </li>
-            }
-            else
-            {
-              <li class="nav-item">
-                <a class="nav-link"  asp-area="Identity" asp-page="/Account/Login">Login</a>
-                </li>
-            }
+            
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <vc:cart-summary/>
           </li>
+          @if (User.Identity.IsAuthenticated)
+          {
+            <li class="nav-item">
+              <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+            </li>
+          }
+          else
+          {
+            <li class="nav-item">
+              <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+          }
+
         </ul>
       </div>
     </div>

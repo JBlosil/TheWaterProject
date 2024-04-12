@@ -157,21 +157,9 @@
     </div>
 </div>
 
-@* @foreach (var product in Model) *@
-
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card rec-card">
-                    <img src="img link" class="card-img-top" alt="product name">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Some Lego Build</h5>
-                        <p class="product-price">$000</p>
-                        <p class="product-rating">Avg x/ 5 Stars</p>
-                        <a href="#" class="btn btn-primary add-to-cart">ADD TO CART</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Repeat the above block for each product, or use a loop -->
-        </div>
-    </div>
+<div class="row">
+    @foreach (Product p in Model.ItemRecommendedProducts)
+    {
+        <partial name="UserRecommendations" model="p"/>
+    }
+</div>

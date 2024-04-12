@@ -2,7 +2,11 @@
 @model TheWaterProject.Pages.CartModel
 @{
 }
-
+<style>
+    .custom-btn-color{
+        background-color: #f06525;
+    }
+</style>
 <h2>Your Cart</h2>
 <table class="table table-bordered table-striped">
     
@@ -43,5 +47,5 @@
 </table>
 
 <div class="text-center">
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Back to shopping!</a>
+    <a class="btn btn-primary custom-btn-color" href="@Model.ReturnUrl">Back to shopping!</a>
 </div>

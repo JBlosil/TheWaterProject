@@ -2,6 +2,12 @@
 }
 @using TheWaterProject.Infrastructrue
 @model Cart
+
+<style>
+    .custom-btn-color {
+        background-color: #f06525
+    }
+</style>
 <div class="">
     @if (Model.Lines.Count() > 0)
     {
@@ -12,5 +18,5 @@
         </small>
     }
     <a class="btn btn-sm btn-secondary navbar-btn" asp-page="/Cart"
-       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()"><i class="fa-solid fa-cart-shopping"></i></a>
+       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()"><i class="fa-solid fa-cart-shopping "></i></a>
 </div>

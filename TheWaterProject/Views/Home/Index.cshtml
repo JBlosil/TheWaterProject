@@ -47,12 +47,12 @@
   
 </style>
 
-<div class="header-container">
-    <img class="img-thumbnail" src="Assets/LOGO.png" alt="Brickwell Logo"/>
-    <div class="welcome-text">
-        WELCOME TO BRICKWELL! YOUR ONE STOP SHOP FOR ALL THINGS LEGO!<br/>HAPPY BRICKING!
-    </div>
+
+<img class="logo" src="Assets/LOGO.png" alt="Brickwell Logo"/>
+<div class="welcome-text">
+    WELCOME TO BRICKWELL! YOUR ONE STOP SHOP FOR ALL THINGS LEGO!<br/>HAPPY BRICKING!
 </div>
+
 
 <!-- Big Shopping Ad & 'Shop Now' Button 
 still need to correctly link the button to the shopping page-->
@@ -61,6 +61,9 @@ still need to correctly link the button to the shopping page-->
     <a asp-controller="Home" asp-action="Products" class="shop-now-btn">SHOP NOW</a>
 </div>
 
+<div class="recommend-text">
+    Recommended for You
+</div>
 <!-- Boxes For Recommended Products -->
 <div class="row">
     @foreach (TopProducts tp in Model.TopProducts)

@@ -2,76 +2,98 @@
   ViewData["Title"] = "Checkout";
 }
 
-<div>
-    <h1>Checkout</h1>
-</div>
-  <form class="row g-3" method = "post">
-    <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">First Name</label>
-      <input type="email" class="form-control" id="first_name">
-    </div>
-    <br/>
-    <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Last Name</label>
-      <input type="password" class="form-control" id="last_name">
-    </div>
-    <br/>
-  <div class="col-12">
-    <label for="CountryOfResidence" class="form-label">Country of Residence</label>
-    <select class="form-control" id="country_of_residence">
-      <option value="">Country</option>
-      <option value="USA">USA</option>
-      <option value="United Kingdom">United Kingdom</option>
-      <option value="China">China</option>
-      <option value="Russia">Russia</option>
-      <option value="India">India</option>
-    </select>
-  </div>
-  <br/>
 
-  <div class="col-12">
-    <label for="CountryOfTransaction" class="form-label">Country of Transaction</label>
-    <select class="form-control" id="CountryOfTransaction">
-      <option value="">Country</option>
-      <option value="USA">USA</option>
-      <option value="United Kingdom">United Kingdom</option>
-      <option value="China">China</option>
-      <option value="Russia">Russia</option>
-      <option value="India">India</option>
-    </select>
+
+<div class="row justify-content-center">
+  <div style="text-align: center;">
+    <h3>Enter your checkout information to submit your order</h3>
   </div>
-    
-  <br/>
+  <div class="col-md-6">
+    <form class="row g-3" method="post">
+      <div class="col-md-6">
+        <label for="firstname" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="first_name">
+      </div>
+      <br/>
+      <div class="col-md-6">
+        <label for="lastname" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="last_name">
+      </div>
+      <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email">
+        </div>
+      <br/>
+      <div class="col-12">
+        <label for="ShippingAddress" class="form-label">Shipping Address</label>
+        <select class="form-control" id="ShippingAddress">
+          <option value="">Select Country</option>
+          <option value="USA">USA</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="China">China</option>
+          <option value="Russia">Russia</option>
+          <option value="India">India</option>
+        </select>
+      </div>
+      <br/>
+
+      <div class="col-12">
+        <label for="CountryOfTransaction" class="form-label">Country of Transaction</label>
+        <select class="form-control" id="CountryOfTransaction">
+          <option value="">Select Country</option>
+          <option value="USA">USA</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="China">China</option>
+          <option value="Russia">Russia</option>
+          <option value="India">India</option>
+        </select>
+      </div>
+
+      <br/>
       <label for="birthDate">Birthdate</label>
       <input type="date" id="birth_date" name="birth_date">
-    <br/>
-    <br/>
-  <div class="input-group mb-3">
-    <label for="Bank" class="form-label">Bank</label>
-    <select class="form-control" id="bank">
-      <option value="">Select Bank</option>
-      <option value="HSBC">HSBC</option>
-      <option value="Halifax">Halifax</option>
-      <option value="Lloyds">Lloyds</option>
-      <option value="Barclays">Barclays</option>
-      <option value="Metro">Metro</option>
-      <option value="Monzo">Monzo</option>
-      <option value="RBS">RBS</option>
-    </select>
-  </div>
-    <br/>
+      <br/>
+      <br/>
+       <div class="col-12">
+          <label for="Gender" class="form-label">Gender</label>
+          <select class="form-control" id="Gender">
+            <option value="">Select Gender</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
+        </div>
+        <br/>
 
-  <div class="input-group mb-3">
-    <label for="CardType" class="form-label">Type of Card</label>
-    <select class="form-control" id="type_of_card">
-      <option value="">Select Card Type</option>
-      <option value="Visa">Visa</option>
-      <option value="Mastercard">Mastercard</option>
-    </select>
-  </div>
-    <br/>
+      <div class="col-12">
+        <label for="CountryOfTransaction" class="form-label">Card Type</label>
+        <select class="form-control" id="CardType">
+          <option value="">Select Card Type</option>
+          <option value="Visa">Visa</option>
+          <option value="Mastercard">Masteracrd</option>
+        </select>
+      </div>
 
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="col-12">
+        <label for="CountryOfTransaction" class="form-label">Bank</label>
+        <select class="form-control" id="CardType">
+          <option value="">Select Bank</option>
+          <option value="HSBC">HSBC</option>
+          <option value="Halifax">Halifax</option>
+          <option value="Lloyds">Lloyds</option>
+          <option value="Barclays">Barclays</option>
+          <option value="Metro">Metro</option>
+          <option value="Monzo">Monzo</option>
+          <option value="RBS">RBS</option>
+        </select>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit Order</button>
+      </div>
+    </form>
   </div>
-</form>
+</div>
+
+
+
+

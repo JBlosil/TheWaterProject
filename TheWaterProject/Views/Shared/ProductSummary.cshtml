@@ -67,14 +67,16 @@
 
 <div class="col-md-4 col-sm-6 mb-4">
     <div class="card h-100">
-        <img src="@Model.img_link" alt="Image of @Model.Name" class="card-img-top" />
+        <a asp-controller="Home" asp-action="ProductDetails" asp-route-productId="@Model.product_ID">
+            <img src="@Model.img_link" alt="Image of @Model.Name" class="card-img-top" />
+        </a>
         <div class="card-body d-flex flex-column">
             <h5 class="card-title text-center">@Model.Name</h5>
             <p class="card-text price text-center">$@Model.Price.00</p>
             <form id=@Model.product_ID method="post" asp-page="/Cart">
-                <input type="hidden" asp-for="product_ID" />
-                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-                <button type="submit" class= "btn btn-smooth">Add to Cart</button>
+                <input type="hidden" asp-for="product_ID"/>
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                <button type="submit" class="btn btn-smooth">Add to Cart</button>
             </form>
         </div>
     </div>

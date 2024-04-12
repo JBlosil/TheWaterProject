@@ -366,4 +366,9 @@ public class HomeController : Controller
         return View(details);
     }
 
+    public IActionResult Checkout()
+    {
+        return View();
+    }
+
 }

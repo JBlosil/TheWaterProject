@@ -28,9 +28,18 @@
             justify-content: center; /* Centers items horizontally when there's extra space */
         }
 
+        .center-container {
+            display: flex;
+            align-items: center; /* Centers items vertically */
+            justify-content: center; /* Centers items horizontally */
+        }
+        
+        /* Image styles */
         .img-fluid {
             max-width: 100%; /* Makes the image responsive */
             height: auto; /* Maintains aspect ratio */
+            margin: 0 auto; /* Centers the image horizontally */
+            justify-content: center; /* This centers the child vertically */
         }
         .description {
             display: -webkit-box;
@@ -85,22 +94,25 @@
 
 <section class="product-display container">
     <div class="row">
-        <div class="col-md-6">
-            <img src="@Model.Product.img_link" alt="@Model.Product.Name" class="img-fluid">
-        </div>
-        <div class="col-md-6">
-            <div class="product-info">
-                <h1 class="product-title" style="font-weight: bolder; font-size: 40px">@Model.Product.Name</h1>
-                <br/>
-                <span class="price" style="color: #F06525; font-weight: bolder; font-size: 36px">$@Model.Product.Price</span>
-                <br/>
-                <br/>
-                <span style="font-weight: bolder; font-size: 24px">Description: </span>
-                <p class="description">@Model.Product.Description</p><a class="read-more">Read More</a>
-                <button class="btn btn-primary rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
+            <div class="center-container col-12">
+                <div class="col-md-6">
+                    <img src="@Model.Product.img_link" alt="@Model.Product.Name" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <div class="product-info">
+                        <h1 class="product-title" style="font-weight: bolder; font-size: 40px">@Model.Product.Name</h1>
+                        <br/>
+                        <span class="price" style="color: #F06525; font-weight: bolder; font-size: 36px">$@Model.Product.Price</span>
+                        <br/>
+                        <br/>
+                        <span style="font-weight: bolder; font-size: 24px">Description: </span>
+                        <p class="description">@Model.Product.Description</p>
+                        <a class="read-more">Read More</a>
+                        <button class="btn btn-primary rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </section>
 <br/>
 <br/>

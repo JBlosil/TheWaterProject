@@ -24,6 +24,21 @@ public class EFIntexRepository : IIntexRepository
         _context.Products.Add(product);
     }
     
+    public void AddCustomer(Customer customer)
+    {
+        _context.Customers.Add(customer);
+    }
+
+    public void AddOrder(Order order)
+    {
+        _context.Orders.Add(order);
+    }
+
+    public void AddCustomer(Order order)
+    {
+        _context.Orders.Add(order);
+    }
+    
     public void DeleteProduct(int product_ID)
     {
         var productToDelete = _context.Products.FirstOrDefault(p => p.product_ID == product_ID);

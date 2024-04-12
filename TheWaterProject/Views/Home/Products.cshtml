@@ -4,14 +4,63 @@
 
 @model ProductsListViewModel
 
-<h1>@Model.CurrentProductCategory</h1>
+<div class="container my-4"> <!-- Spacing above and below this container -->
+    <div class="row mb-3"> <!-- Spacing below the row -->
+        <div class="col-6">
+            <h2 class="mb-0" style="color:#F06525; font-weight: bold">Products</h2> <!-- No bottom margin for the title -->
+        </div>
+        <form asp-controller="Home" asp-action="Products" method="get">
+            <div class="dropdown d-inline-block ml-2">
+                <i class="fa-solid fa-filter"></i>                    
+                <button class="btn custom-btn-color btn-secondary dropdown-toggle rounded-pill" type="button" id="colorDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    All
+                </button>
+                <div class="dropdown-menu" aria-labelledby="colorDropdown">
+                    <button class="dropdown-item" type="submit" name="color" value="">All</button>
+                    <button class="dropdown-item" type="submit" name="color" value="Black">Black</button>
+                    <button class="dropdown-item" type="submit" name="color" value="Blue">Blue</button>
+                    <button class="dropdown-item" type="submit" name="color" value="Brown">Green</button>
+                    <button class="dropdown-item" type="submit" name="color" value="Grey">Grey</button>
+                    <button class="dropdown-item" type="submit" name="color" value="Orange">Orange</button>
+                    <button class="dropdown-item" type="submit" name="color" value="Red">Red</button>
+                    <button class="dropdown-item" type="submit" name="color" value="Tan">Tan</button>
+                    <button class="dropdown-item" type="submit" name="color" value="White">White</button>
+                    <button class="dropdown-item" type="submit" name="color" value="Yellow">Yellow</button>
+                </div>
+            </div>
+        </form>
+        <div>
+                    <form asp-controller="Home" asp-action="Products" method="get">
+                        <div class="dropdown d-inline-block ml-2">
+                            <i class="fa-solid fa-filter"></i>                    
+                            <button class="btn custom-btn-color btn-secondary dropdown-toggle rounded-pill" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                All
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                <button class="dropdown-item" type="submit" name="color" value="">All</button>
+                                <button class="dropdown-item" type="submit" name="color" value="Part">Part</button>
+                                <button class="dropdown-item" type="submit" name="color" value="Energy">Energy</button>
+                                <button class="dropdown-item" type="submit" name="color" value="Harry Potter">Harry Potter</button>
+                            </div>
+                        </div>
+                    </form>
+        </div>
+    </div>
+</div>
+
+<h1>@Model.ProductCategory</h1>
 <div class="row">
-    @foreach (Product p in Model.Products)
+    @foreach (ProductsListViewModel.ProductDetailsViewModel p in Model.ProductsList)
     {
         <partial name="ProductSummary" model="p"/>
     }
 </div>
 
-<div page-model = "@Model.PaginationInfo" page-action = "Products" page-class-enabled = "true" 
-     page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-url-productCategory="@Model.CurrentProductCategory" class="btn-group pull-right m-1"></div>
+<div class="container align-content-center">
+    <div class="pagination-container">
+        <a href="@Url.Action("Products", new { pageNum = Model.PaginationInfo.CurrentPage - 1,  productColor = Model.ProductColor, productCategory = Model.ProductCategory })" class="btn btn-default @(Model.PaginationInfo.CurrentPage == 1 ? "disabled" : "")">Previous</a>
+        <span>@(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage - (Model.PaginationInfo.ItemsPerPage - 1)) to @Math.Min(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage, Model.PaginationInfo.TotalItems) of @Model.PaginationInfo.TotalItems</span>
+        <a href="@Url.Action("Products", new { pageNum = Model.PaginationInfo.CurrentPage + 1, productColor = Model.ProductColor, productCategory = Model.ProductCategory  })" class="btn btn-default @(Model.PaginationInfo.CurrentPage * Model.PaginationInfo.ItemsPerPage >= Model.PaginationInfo.TotalItems ? "disabled" : "")">Next</a>
+    </div>
+</div>
     

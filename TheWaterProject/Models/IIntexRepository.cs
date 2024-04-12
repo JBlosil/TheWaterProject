@@ -20,4 +20,7 @@ public interface IIntexRepository
     void UpdateProduct(Product product);
     void AddProduct(Product product);
     void SaveChanges();
+
+    void AddCustomer(Customer customer);
+    void AddOrder(Order order);
 }

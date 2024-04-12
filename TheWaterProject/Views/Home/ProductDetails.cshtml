@@ -1,6 +1,6 @@
 @using TheWaterProject.Controllers
+@using TheWaterProject.Infrastructrue
 @model ProductDetailsViewModel
-
 @{
     ViewData["Title"] = "Product Details";
     
@@ -108,7 +108,11 @@
                         <span style="font-weight: bolder; font-size: 24px">Description: </span>
                         <p class="description">@Model.Product.Description</p>
                         <a class="read-more">Read More</a>
-                        <button class="btn btn-primary rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button>
+                        <form id=@Model.Product.product_ID method="post" asp-page="/Cart">
+                            <input type="hidden" asp-for="@Model.Product.product_ID"/>
+                            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                            <button class="btn btn-primary rounded-pill add-to-cart w-100 mx-auto px-0">ADD TO CART</button> 
+                        </form>
                     </div>
                 </div>
             </div>
@@ -126,9 +130,6 @@
             <i class="fa-solid fa-cubes fa-2xl"></i> <p>@Model.Product.Num_Parts</p>
         </div>
         <div class="col text-center">
-            <i class="fas fa-star fa-2xl" aria-hidden="true"></i> <p>Avg 4/5</p>
-        </div>
-        <div class="col text-center">
             <i class="fas fa-tint fa-2xl" aria-hidden="true"></i> <p>@Model.Product.Primary_Color & @Model.Product.Secondary_Color</p>
         </div>
         <div class="col text-center">
@@ -142,7 +143,6 @@
         const readMoreButton = document.querySelector('.read-more');
         const description = document.querySelector('.description');
 
-        // Change this threshold based on your average character per line
         const charThreshold = 400;
 
         if (description.innerText.length > charThreshold) {

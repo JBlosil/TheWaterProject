@@ -3,71 +3,111 @@ EDITS TO MAKE:
 - Make sure sizing is correct
 - make sure images work
 -->
+<style>
+    .rounded-circle {
+        border: 5px solid orange;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+    }
+    .social-icons a {
+        color: #000; /* Replace with any color */
+        margin: 0 10px;
+        font-size: 24px; /* Icon size */
+    }
+    .social-icons {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .social-section p {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    .event {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    .event .event-text {
+        flex: 1;
+        padding: 15px;
+    }
+    .event-left .event-text {
+        text-align: right;
+    }
+    .event-right .event-text {
+        text-align: left;
+    }
+    .event-image {
+        border: 5px solid #555; /* Adjust the border color as needed */
+    }
+    .final-note {
+        text-align: center;
+        margin-top: 40px;
+    }
+</style>
 
-<!-- INTRODUCTION -->
-<div class="profile-section">
-    <img class="profile-image" src="TheWaterProject/wwwroot/Assets/aurora.png" alt="Aurora Brickwell">
-    <div class="intro-text">
-        Hi! My name is Aurora Brickwell! I'm the founder of the Brickwell Shop and I'm so happy you've found my site. I want to share my passion with you! Follow along my journey to learn how I got where I am today!
-    </div>
-  
-    <!-- CONNECT WITH US -->
-    <div class="social-section">
-        <p>CONNECT WITH US!</p>
-        <div class="social-icons">
-            
-            <!-- Icons would be anchor tags linking to your social media -->
-            <a href="https://www.tiktok.com/"><img src="https://www.flaticon.com/free-icons/tik-tok" alt="TikTok logo"></a>
-            <a href="https://www.instagram.com/"><img src="https://www.flaticon.com/free-icons/instagram-logo" alt="Instagram logo"></a>
-            <a href="https://www.facebook.com/"><img src="https://www.flaticon.com/free-icons/facebook" alt="Facebook logo"></a>
-        </div>
-    </div>
-</div>
 
 
-<!-- JOURNEY/TIMELINE -->
-<div class="event event-left">
-   <div class="event-text">
-       In 2004, I got my very first LEGO set - the Imperial Star Destroyer - and I was immediately hooked!
-   </div>
-   <img class="event-image" src="..wwwroot/Assets/firstLegoSet.png" alt="Event 1">
-</div>
+<div class="container">
+    <!-- CONNECT WITH US -->
+    <div class="social-section">
+        <p>CONNECT WITH US!</p>
+        <div class="social-icons">
+            <a href="https://www.tiktok.com/"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </div>
 
-<div class="event event-right">
-   <img class="event-image" src="..wwwroot/Assets/legoCompetition.png" alt="Event 2">
-   <div class="event-text">
-       In 2008 my family supported me in my first LEGO STEM competition where I placed 2nd.
-   </div>
-</div>
+    <!-- JOURNEY/TIMELINE -->
+    <div class="event event-left">
+        <div class="event-text">
+            In 2004, I got my very first LEGO set - the Imperial Star Destroyer - and I was immediately hooked!
+        </div>
+        <img class="rounded-circle event-image" src="~/Assets/firstLegoSet.png" alt="First LEGO Set">
+    </div>
 
-<div class="event event-left">
-   <div class="event-text">
-       Over the years, I started coming up with my own designs that landed me in the local paper.
-   </div>
-   <img class="event-image" src="..wwwroot/Assets/newspaper.png" alt="Event 3">
-</div>
+    <div class="event event-right">
+        <img class="rounded-circle event-image" src="~/Assets/legoCompetition.png" alt="LEGO Competition">
+        <div class="event-text">
+            In 2008 my family supported me in my first LEGO STEM competition where I placed 2nd.
+        </div>
+    </div>
 
-<div class="event event-right">
-   <img class="event-image" src="..wwwroot/Assets/summerCamp.png" alt="Event 4">
-   <div class="event-text">
-       Every summer during high school, I volunteered as a LEGO camp counselor where I helped kids unleash their creativity.
-   </div>
-</div>
+    <div class="event event-left">
+        <div class="event-text">
+            Over the years, I started coming up with my own designs that landed me in the local paper.
+        </div>
+        <img class="rounded-circle event-image" src="~/Assets/newspaper.png" alt="Local Newspaper Feature">
+    </div>
 
-<div class="event event-left">
-   <div class="event-text">
-       In college I started my social media channel dedicated to sharing about my favorite creations and got so much support!
-   </div>
-   <img class="event-image" src="..wwwroot/Assets/contentCreator.png" alt="Event 5">
-</div>
+    <div class="event event-right">
+        <img class="rounded-circle event-image" src="~/Assets/summerCamp.png" alt="LEGO Camp Counselor">
+        <div class="event-text">
+            Every summer during high school, I volunteered as a LEGO camp counselor where I helped kids unleash their creativity.
+        </div>
+    </div>
 
-<div class="event event-right">
-   <img class="event-image" src="..wwwroot/Assets/2.png" alt="Event 6">
-   <div class="event-text">
-       This year, I decided to open up shop officially and share my favorite designs and favorite sets with the world.
-   </div>
-</div>
+    <div class="event event-left">
+        <div class="event-text">
+            In college I started my social media channel dedicated to sharing about my favorite creations and got so much support!
+        </div>
+        <img class="rounded-circle event-image" src="~/Assets/contentCreator.png" alt="Content Creator">
+    </div>
 
-<div class="final-note">
-   Thank you for being a part of my LEGO journey! I wish you the best of luck on your own and I'm honored to play a part - however small it may be - in your creativity.
+    <div class="event event-right">
+        <img class="rounded-circle event-image" src="~/Assets/2.png" alt="LEGO Shop">
+        <div class="event-text">
+            This year, I decided to open up shop officially and share my favorite designs and favorite sets with the world.
+        </div>
+    </div>
+
+    <div class="final-note">
+        Thank you for being a part of my LEGO journey! I wish you the best of luck on your own, and I'm honored to play a part - however small it may be - in your creativity.
+    </div>
 </div>
